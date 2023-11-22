@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\PhpDomain;
+namespace T3Docs\GuidesPhpDomain\PhpDomain;
 
 use Psr\Log\LoggerInterface;
-use T3Docs\PhpDomain\Nodes\MethodNameNode;
+use T3Docs\GuidesPhpDomain\Nodes\MethodNameNode;
 
 class MethodNameService
 {

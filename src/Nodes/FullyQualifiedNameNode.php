@@ -1,6 +1,6 @@
 <?php
 
-namespace T3Docs\PhpDomain\Nodes;
+namespace T3Docs\GuidesPhpDomain\Nodes;
 
 use phpDocumentor\Guides\Nodes\AbstractNode;
 

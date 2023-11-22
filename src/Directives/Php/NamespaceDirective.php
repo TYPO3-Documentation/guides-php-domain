@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\Directives\Php;
+namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\RestructuredText\Directives\ActionDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
-use T3Docs\PhpDomain\Nodes\PhpNamespaceNode;
-use T3Docs\PhpDomain\PhpDomain\NamespaceRepository;
+use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
+use T3Docs\GuidesPhpDomain\PhpDomain\NamespaceRepository;
 
 final class NamespaceDirective extends ActionDirective
 {

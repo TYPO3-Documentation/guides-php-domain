@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\Directives\Php;
+namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
 use phpDocumentor\Guides\Nodes\Node;
@@ -12,8 +12,8 @@ use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
 use phpDocumentor\Guides\RestructuredText\Parser\Productions\Rule;
 use phpDocumentor\Guides\RestructuredText\TextRoles\GenericLinkProvider;
-use T3Docs\PhpDomain\Nodes\PhpEnumNode;
-use T3Docs\PhpDomain\PhpDomain\FullyQualifiedNameService;
+use T3Docs\GuidesPhpDomain\Nodes\PhpEnumNode;
+use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 
 final class EnumDirective extends SubDirective
 {

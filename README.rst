@@ -1,11 +1,10 @@
-
 ===========================================
 PHP domain directives for Restructured Text
 ===========================================
 
-You can also require this theme in your composer.json::
+You can require this package in your composer.json::
 
-    composer req t3docs/php-domain
+    composer req t3docs/guides-php-domain
 
-This theme uses the `phpDocumentor Guides <https://github.com/phpDocumentor/guides>`__
+This package uses the `phpDocumentor Guides <https://github.com/phpDocumentor/guides>`__
 for parsing and rendering restructuredText.

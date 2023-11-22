@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\Nodes;
+namespace T3Docs\GuidesPhpDomain\Nodes;
 
 use phpDocumentor\Guides\Nodes\CompoundNode;
 use phpDocumentor\Guides\Nodes\Node;
