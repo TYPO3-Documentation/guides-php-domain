@@ -29,7 +29,7 @@ class FullyQualifiedNameNode extends AbstractNode
 
     public function toString(): string
     {
-        if ($this->namespaceNode === null) {
+        if (!$this->namespaceNode instanceof PhpNamespaceNode) {
             return $this->name;
         }
         return '\\' . $this->namespaceNode->toString() . '\\' . $this->name;

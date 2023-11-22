@@ -26,7 +26,7 @@ final class FullyQualifiedNameServiceTest extends TestCase
     public function testValidClassNames(string $expectedName, string|null $expectedNamespace, string $fqn): void
     {
         $result = $this->fullyQualifiedNameService->getFullyQualifiedName($fqn);
-        self::assertEquals($expectedName, $result->getName());
+        self::assertSame($expectedName, $result->getName());
         self::assertEquals($expectedNamespace, $result->getNamespaceNode()?->getName());
     }
 
@@ -49,7 +49,7 @@ final class FullyQualifiedNameServiceTest extends TestCase
     {
         $this->namespaceRepository->method('getCurrentNamespace')->willReturn(new PhpNamespaceNode($currentNamespace));
         $result = $this->fullyQualifiedNameService->getFullyQualifiedName($fqn, true);
-        self::assertEquals($expectedName, $result->getName());
+        self::assertSame($expectedName, $result->getName());
         self::assertEquals($expectedNamespace, $result->getNamespaceNode()?->getName());
     }
 
@@ -71,7 +71,7 @@ final class FullyQualifiedNameServiceTest extends TestCase
     public function testInValidClassNames(string $fqn): void
     {
         $this->expectException(\Exception::class);
-        $result = $this->fullyQualifiedNameService->getFullyQualifiedName($fqn);
+        $this->fullyQualifiedNameService->getFullyQualifiedName($fqn);
     }
 
     /**

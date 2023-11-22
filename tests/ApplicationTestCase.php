@@ -17,7 +17,7 @@ abstract class ApplicationTestCase extends TestCase
 
     public function getContainer(): Container
     {
-        if ($this->container === null) {
+        if (!$this->container instanceof Container) {
             $this->prepareContainer();
         }
 

@@ -56,3 +56,5 @@ jobs:
         run: "make code-style"
       - name: "Run static code analysis"
         run: "make phpstan"
+      - name: "Run rector"
+        run: "make rector-dry"

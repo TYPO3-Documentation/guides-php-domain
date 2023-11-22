@@ -26,7 +26,7 @@ parameters:
 			path: tests/integration/IntegrationTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$content of static method T3Docs\\\\GuidesPhpDomain\\\\Tests\\\\integration\\\\IntegrationTest\\:\\:getTrimmedFileContent\\(\\) expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$content of method T3Docs\\\\GuidesPhpDomain\\\\Tests\\\\integration\\\\IntegrationTest\\:\\:getTrimmedFileContent\\(\\) expects string, string\\|false given\\.$#"
 			count: 2
 			path: tests/integration/IntegrationTest.php
 

@@ -27,7 +27,7 @@ abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode
         array $value = [],
         private PhpNamespaceNode|null $namespace = null,
         private array $members = [],
-        private array $modifiers = [],
+        private readonly array $modifiers = [],
     ) {
         parent::__construct($value);
     }
