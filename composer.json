@@ -10,7 +10,8 @@
         }
     },
     "require": {
-        "phpdocumentor/guides": "dev-main"
+        "phpdocumentor/guides": "dev-main",
+        "phpdocumentor/guides-restructured-text": "dev-main"
     },
     "require-dev": {
         "phpdocumentor/guides-cli": "dev-main"
