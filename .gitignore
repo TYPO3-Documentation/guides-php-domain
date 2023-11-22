@@ -3,3 +3,4 @@
 /**/temp/
 /Documentation-GENERATED-temp/
 /.php-cs-fixer.cache
+/.phpunit.result.cache
