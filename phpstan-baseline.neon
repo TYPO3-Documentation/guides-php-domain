@@ -1,0 +1,51 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function phpDocumentor\\\\Guides\\\\DependencyInjection\\\\template not found\\.$#"
+			count: 5
+			path: src/DependencyInjection/PhpDomainExtension.php
+
+		-
+			message: "#^Used function phpDocumentor\\\\Guides\\\\DependencyInjection\\\\template not found\\.$#"
+			count: 1
+			path: src/DependencyInjection/PhpDomainExtension.php
+
+		-
+			message: "#^Method T3Docs\\\\GuidesPhpDomain\\\\Tests\\\\ApplicationTestCase\\:\\:prepareContainer\\(\\) has parameter \\$extraExtensions with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/ApplicationTestCase.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$extraExtensions with type Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\ExtensionInterface is incompatible with native type array\\.$#"
+			count: 1
+			path: tests/ApplicationTestCase.php
+
+		-
+			message: "#^Method T3Docs\\\\GuidesPhpDomain\\\\Tests\\\\integration\\\\IntegrationTest\\:\\:getTestsForDirectory\\(\\) should return array\\{string, string, string, array\\<int, string\\>\\} but returns array\\<0\\|1\\|2\\|3\\|string, array\\<int, array\\<int\\<0, max\\>, string\\>\\|string\\>\\|string\\>\\.$#"
+			count: 1
+			path: tests/integration/IntegrationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of static method T3Docs\\\\GuidesPhpDomain\\\\Tests\\\\integration\\\\IntegrationTest\\:\\:getTrimmedFileContent\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: tests/integration/IntegrationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|false given\\.$#"
+			count: 2
+			path: tests/integration/IntegrationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/integration/IntegrationTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/integration/IntegrationTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$string of function explode expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/integration/IntegrationTest.php

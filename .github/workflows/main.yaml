@@ -52,5 +52,7 @@ jobs:
           dependency-versions: "locked"
       - name: "Check composer.json"
         run: "composer normalize --dry-run"
-      - name: "CGL"
+      - name: "Check code style"
         run: "make code-style"
+      - name: "Run static code analysis"
+        run: "make phpstan"

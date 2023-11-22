@@ -1,0 +1,17 @@
+includes:
+  - phpstan-baseline.neon
+rules:
+  - Symplify\PHPStanRules\Rules\AnnotateRegexClassConstWithRegexLinkRule
+  - Symplify\PHPStanRules\Rules\RegexSuffixInRegexConstantRule
+parameters:
+  phpVersion: 80100
+  level: max
+  strictRules:
+    allRules: false
+    strictCalls: true
+    requireParentConstructorCall: true
+  inferPrivatePropertyTypeFromConstructor: true
+  treatPhpDocTypesAsCertain: false
+  paths:
+    - src
+    - tests
