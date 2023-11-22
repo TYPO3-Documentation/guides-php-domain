@@ -1,5 +1,5 @@
 /composer.lock
 /vendor/
-/.cache/
 /**/temp/
 /Documentation-GENERATED-temp/
+/.php-cs-fixer.cache

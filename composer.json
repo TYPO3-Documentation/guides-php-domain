@@ -1,24 +1,29 @@
 {
     "name": "t3docs/guides-php-domain",
-    "description": "A theme for use in the phpdocumentor",
-    "type": "library",
+    "description": "PHP domain directives for Restructured Text",
     "license": "MIT",
+    "type": "library",
     "homepage": "https://docs.typo3.org",
-    "autoload": {
-        "psr-4": {
-            "T3Docs\\GuidesPhpDomain\\": "src/"
-        }
-    },
     "require": {
         "phpdocumentor/guides": "dev-main",
         "phpdocumentor/guides-restructured-text": "dev-main"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.39",
+        "friendsofphp/php-cs-fixer": "^3.39",
         "phpdocumentor/guides-cli": "dev-main"
     },
-    "config": {
-        "sort-packages": true
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "T3Docs\\GuidesPhpDomain\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    }
 }

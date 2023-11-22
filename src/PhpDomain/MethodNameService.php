@@ -22,7 +22,7 @@ class MethodNameService
     {
         if (preg_match(self::METHOD_SIGNATURE_REGEX, $name, $matches)) {
             $methodName = $matches[1];
-            $parameters = isset($matches[2]) ? $matches[2] : '';
+            $parameters = $matches[2] ?? '';
             $returnType = $matches[3] ?? null;
             $parametersArray = preg_split('/\s*,\s*/', $parameters, -1, PREG_SPLIT_NO_EMPTY);
             if ($parametersArray === false) {

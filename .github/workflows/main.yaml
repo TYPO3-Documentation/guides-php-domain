@@ -1,0 +1,52 @@
+name: "Main"
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+
+jobs:
+  build-php:
+    name: Build PHP
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - '8.1'
+          - '8.2'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "locked"
+      - name: "Lint PHP"
+        run: find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
+      - name: "CGL"
+        run: "make code-style"
+
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "locked"
+      - name: "Check composer.json"
+        run: "composer normalize --dry-run"
