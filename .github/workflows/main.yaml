@@ -32,7 +32,7 @@ jobs:
       - name: "Lint PHP"
         run: find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
       - name: "Run unit tests"
-        run: make test
+        run: vendor/bin/phpunit -c phpunit.xml.dist
 
   quality:
     name: Quality
