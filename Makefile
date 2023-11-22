@@ -9,6 +9,13 @@ code-style: ## Executes php-cs-fixer with "check" option
 fix-code-style: ## Executes php-cs-fixer with "fix" option
 	vendor/bin/php-cs-fixer fix
 
+.PHONY: test-integration
+test-integration: ## Runs integration tests with phpunit
+	vendor/bin/phpunit --testsuite=integration
+
+.PHONY: test-unit
+test-unit: ## Runs unit tests with phpunit
+	vendor/bin/phpunit --testsuite=unit
+
 .PHONY: test
-test: ## Runs unit tests with phpunit
-	vendor/bin/phpunit
+test: test-integration test-unit ## Runs all test suites with phpunit
