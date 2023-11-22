@@ -1,15 +1,24 @@
 {
-    "name": "t3docs/php-domain",
+    "name": "t3docs/guides-php-domain",
     "description": "A theme for use in the phpdocumentor",
     "type": "library",
     "license": "MIT",
     "homepage": "https://docs.typo3.org",
     "autoload": {
         "psr-4": {
-            "T3Docs\\PhpDomain\\": "src/"
+            "T3Docs\\GuidesPhpDomain\\": "src/"
         }
     },
     "require": {
-        "phpdocumentor/guides-theme-bootstrap": "dev-main"
-    }
+        "phpdocumentor/guides": "dev-main",
+        "phpdocumentor/guides-restructured-text": "dev-main"
+    },
+    "require-dev": {
+        "phpdocumentor/guides-cli": "dev-main"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

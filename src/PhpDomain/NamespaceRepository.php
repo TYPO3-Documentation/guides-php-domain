@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\PhpDomain;
+namespace T3Docs\GuidesPhpDomain\PhpDomain;
 
-use T3Docs\PhpDomain\Nodes\PhpNamespaceNode;
+use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
 
 class NamespaceRepository
 {
