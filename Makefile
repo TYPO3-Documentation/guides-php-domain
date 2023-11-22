@@ -1,5 +1,5 @@
 .PHONY: qa
-qa: fix-code-style test
+qa: fix-code-style test phpstan
 
 .PHONY: code-style
 code-style: ## Executes php-cs-fixer with "check" option
@@ -8,6 +8,14 @@ code-style: ## Executes php-cs-fixer with "check" option
 .PHONY: fix-code-style
 fix-code-style: ## Executes php-cs-fixer with "fix" option
 	vendor/bin/php-cs-fixer fix
+
+.PHONY: phpstan
+phpstan: ## Execute phpstan
+	vendor/bin/phpstan --configuration=phpstan.neon
+
+.PHONY: phpstan-baseline
+phpstan-baseline: ## Generates phpstan baseline
+	vendor/bin/phpstan --configuration=phpstan.neon --generate-baseline
 
 .PHONY: test-integration
 test-integration: ## Runs integration tests with phpunit
