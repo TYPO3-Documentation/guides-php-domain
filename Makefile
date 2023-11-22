@@ -11,4 +11,4 @@ fix-code-style: ## Executes php-cs-fixer with "fix" option
 
 .PHONY: test
 test: ## Runs unit tests with phpunit
-	vendor/bin/phpunit -c phpunit.xml.dist
+	vendor/bin/phpunit
