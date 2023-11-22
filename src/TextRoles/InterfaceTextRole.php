@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\TextRoles;
+namespace T3Docs\GuidesPhpDomain\TextRoles;
 
 use phpDocumentor\Guides\Nodes\Inline\AbstractLinkInlineNode;
 use phpDocumentor\Guides\Nodes\Inline\ReferenceNode;

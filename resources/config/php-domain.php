@@ -9,18 +9,14 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
-use T3Docs\PhpDomain\Directives\Php\EnumDirective;
-
-use T3Docs\PhpDomain\Directives\Php\InterfaceDirective;
-
-use T3Docs\PhpDomain\Directives\Php\MethodDirective;
-use T3Docs\PhpDomain\Directives\Php\NamespaceDirective;
-
-use T3Docs\PhpDomain\PhpDomain\FullyQualifiedNameService;
-
-use T3Docs\PhpDomain\PhpDomain\MethodNameService;
-use T3Docs\PhpDomain\PhpDomain\NamespaceRepository;
-use T3Docs\PhpDomain\TextRoles\InterfaceTextRole;
+use T3Docs\GuidesPhpDomain\Directives\Php\EnumDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\InterfaceDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\MethodDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\NamespaceDirective;
+use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
+use T3Docs\GuidesPhpDomain\PhpDomain\MethodNameService;
+use T3Docs\GuidesPhpDomain\PhpDomain\NamespaceRepository;
+use T3Docs\GuidesPhpDomain\TextRoles\InterfaceTextRole;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
