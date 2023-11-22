@@ -11,13 +11,19 @@
     "require-dev": {
         "ergebnis/composer-normalize": "^2.39",
         "friendsofphp/php-cs-fixer": "^3.39",
-        "phpdocumentor/guides-cli": "dev-main"
+        "phpdocumentor/guides-cli": "dev-main",
+        "phpunit/phpunit": "^10.4"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "T3Docs\\GuidesPhpDomain\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "T3Docs\\GuidesPhpDomain\\Tests\\": "tests/"
         }
     },
     "config": {

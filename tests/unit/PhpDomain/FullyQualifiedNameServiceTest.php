@@ -2,22 +2,26 @@
 
 declare(strict_types=1);
 
-namespace T3Docs\PhpDomain\PhpDomain;
+namespace T3Docs\GuidesPhpDomain\Tests\PhpDomain;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use T3Docs\PhpDomain\Nodes\PhpNamespaceNode;
+use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
+use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
+use T3Docs\GuidesPhpDomain\PhpDomain\NamespaceRepository;
 
-class FullyQualifiedNameServiceTest extends TestCase
+final class FullyQualifiedNameServiceTest extends TestCase
 {
     private NamespaceRepository&MockObject $namespaceRepository;
     private FullyQualifiedNameService $fullyQualifiedNameService;
+
     protected function setUp(): void
     {
         $this->namespaceRepository = $this->createMock(NamespaceRepository::class);
         $this->fullyQualifiedNameService = new FullyQualifiedNameService($this->namespaceRepository);
     }
+
     #[DataProvider('validFqnProvider')]
     public function testValidClassNames(string $expectedName, string|null $expectedNamespace, string $fqn): void
     {
@@ -25,6 +29,7 @@ class FullyQualifiedNameServiceTest extends TestCase
         self::assertEquals($expectedName, $result->getName());
         self::assertEquals($expectedNamespace, $result->getNamespaceNode()?->getName());
     }
+
     /**
      * @return array<int, mixed>
      */
@@ -38,6 +43,7 @@ class FullyQualifiedNameServiceTest extends TestCase
             ['AnotherClassName', null, 'AnotherClassName'],
         ];
     }
+
     #[DataProvider('validFqnProviderWithCurrentNamespace')]
     public function testValidClassNameWithCurrentNamespace(string $expectedName, string|null $expectedNamespace, string $fqn, string $currentNamespace): void
     {
@@ -46,6 +52,7 @@ class FullyQualifiedNameServiceTest extends TestCase
         self::assertEquals($expectedName, $result->getName());
         self::assertEquals($expectedNamespace, $result->getNamespaceNode()?->getName());
     }
+
     /**
      * @return array<int, mixed>
      */
@@ -59,12 +66,14 @@ class FullyQualifiedNameServiceTest extends TestCase
             ['AnotherClassName', 'Another\\Namespace', 'AnotherClassName', 'Another\\Namespace'],
         ];
     }
+
     #[DataProvider('inValidFqnProvider')]
     public function testInValidClassNames(string $fqn): void
     {
         $this->expectException(\Exception::class);
         $result = $this->fullyQualifiedNameService->getFullyQualifiedName($fqn);
     }
+
     /**
      * @return array<int, mixed>
      */

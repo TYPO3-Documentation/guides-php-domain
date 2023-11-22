@@ -31,8 +31,8 @@ jobs:
           dependency-versions: "locked"
       - name: "Lint PHP"
         run: find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
-      - name: "CGL"
-        run: "make code-style"
+      - name: "Run unit tests"
+        run: make test
 
   quality:
     name: Quality
@@ -50,3 +50,5 @@ jobs:
           dependency-versions: "locked"
       - name: "Check composer.json"
         run: "composer normalize --dry-run"
+      - name: "CGL"
+        run: "make code-style"
