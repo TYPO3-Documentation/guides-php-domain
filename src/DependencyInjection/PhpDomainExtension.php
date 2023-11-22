@@ -4,22 +4,19 @@ declare(strict_types=1);
 
 namespace T3Docs\GuidesPhpDomain\DependencyInjection;
 
-use function dirname;
-use function phpDocumentor\Guides\DependencyInjection\template;
-
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use T3Docs\GuidesPhpDomain\Nodes\FullyQualifiedNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\MethodNameNode;
-
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMethodNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
+
+use function dirname;
+use function phpDocumentor\Guides\DependencyInjection\template;
 
 final class PhpDomainExtension extends Extension implements PrependExtensionInterface
 {
