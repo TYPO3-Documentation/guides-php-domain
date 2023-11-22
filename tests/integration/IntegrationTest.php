@@ -87,17 +87,11 @@ final class IntegrationTest extends ApplicationTestCase
             foreach ($compareFiles as $compareFile) {
                 $outputFile = str_replace($expectedPath, $outputPath, $compareFile);
                 if (str_ends_with($compareFile, '.log')) {
-                    self::assertFileContainsLines($compareFile, $outputFile);
+                    $this->assertFileContainsLines($compareFile, $outputFile);
                 } elseif ($htmlOnlyBetweenMarkers && str_ends_with($compareFile, '.html')) {
-                    self::assertFileEqualsTrimmedBetweenMarkers(
-                        $compareFile,
-                        $outputFile,
-                        'Expected file path: ' . $compareFile,
-                        self::CONTENT_START,
-                        self::CONTENT_END
-                    );
+                    $this->assertFileEqualsTrimmedBetweenMarkers($compareFile, $outputFile, 'Expected file path: ' . $compareFile, self::CONTENT_START, self::CONTENT_END);
                 } else {
-                    self::assertFileEqualsTrimmed($compareFile, $outputFile, 'Expected file path: ' . $compareFile);
+                    $this->assertFileEqualsTrimmed($compareFile, $outputFile, 'Expected file path: ' . $compareFile);
                 }
             }
         } catch (ExpectationFailedException $e) {
@@ -132,21 +126,21 @@ final class IntegrationTest extends ApplicationTestCase
      *
      * @throws ExpectationFailedException
      */
-    private static function assertFileEqualsTrimmedBetweenMarkers(string $expected, string $actual, string $message, string $startMarker, string $endMarker): void
+    private function assertFileEqualsTrimmedBetweenMarkers(string $expected, string $actual, string $message, string $startMarker, string $endMarker): void
     {
         self::assertFileExists($expected);
         self::assertFileExists($actual);
 
-        $expectedContent = self::extractContentBetweenMarkers($expected, $startMarker, $endMarker);
-        $actualContent = self::extractContentBetweenMarkers($actual, $startMarker, $endMarker);
+        $expectedContent = $this->extractContentBetweenMarkers($expected, $startMarker, $endMarker);
+        $actualContent = $this->extractContentBetweenMarkers($actual, $startMarker, $endMarker);
 
-        self::assertEquals(self::getTrimmedFileContent($expectedContent), self::getTrimmedFileContent($actualContent), $message);
+        self::assertSame($this->getTrimmedFileContent($expectedContent), $this->getTrimmedFileContent($actualContent), $message);
     }
 
     /**
      * Extract content between specified markers in a file.
      */
-    private static function extractContentBetweenMarkers(string $filePath, string $startMarker, string $endMarker): string
+    private function extractContentBetweenMarkers(string $filePath, string $startMarker, string $endMarker): string
     {
         $fileContent = file_get_contents($filePath);
         $startPos = strpos($fileContent, $startMarker);
@@ -164,7 +158,7 @@ final class IntegrationTest extends ApplicationTestCase
      *
      * @throws ExpectationFailedException
      */
-    private static function assertFileContainsLines(string $expected, string $actual): void
+    private function assertFileContainsLines(string $expected, string $actual): void
     {
         self::assertFileExists($expected);
         self::assertFileExists($actual);
@@ -182,23 +176,21 @@ final class IntegrationTest extends ApplicationTestCase
      *
      * @throws ExpectationFailedException
      */
-    private static function assertFileEqualsTrimmed(string $expected, string $actual, string $message = ''): void
+    private function assertFileEqualsTrimmed(string $expected, string $actual, string $message = ''): void
     {
         self::assertFileExists($expected, $message);
         self::assertFileExists($actual, $message);
 
-        self::assertEquals(self::getTrimmedFileContent(file_get_contents($expected)), self::getTrimmedFileContent(file_get_contents($actual)), $message);
+        self::assertSame($this->getTrimmedFileContent(file_get_contents($expected)), $this->getTrimmedFileContent(file_get_contents($actual)), $message);
     }
 
-    private static function getTrimmedFileContent(string $content): string
+    private function getTrimmedFileContent(string $content): string
     {
         $contentArray = explode("\n", $content);
         array_walk($contentArray, static function (&$value): void {
             $value = trim($value);
         });
-        $contentArray = array_filter($contentArray, static function ($value) {
-            return $value !== '';
-        });
+        $contentArray = array_filter($contentArray, static fn($value): bool => $value !== '');
 
         return implode("\n", $contentArray);
     }

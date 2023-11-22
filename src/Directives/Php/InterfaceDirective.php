@@ -42,7 +42,7 @@ final class InterfaceDirective extends SubDirective
 
         $id = $this->anchorReducer->reduceAnchor($fqn->toString());
 
-        $interfaceNode = new PhpInterfaceNode(
+        return new PhpInterfaceNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
@@ -50,6 +50,5 @@ final class InterfaceDirective extends SubDirective
             [],
             [],
         );
-        return $interfaceNode;
     }
 }

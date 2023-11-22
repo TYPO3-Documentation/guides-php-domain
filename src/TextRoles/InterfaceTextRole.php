@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace T3Docs\GuidesPhpDomain\TextRoles;
 
+use Doctrine\Common\Lexer\Token;
 use phpDocumentor\Guides\Nodes\Inline\AbstractLinkInlineNode;
 use phpDocumentor\Guides\Nodes\Inline\ReferenceNode;
 use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
@@ -52,7 +53,7 @@ final class InterfaceTextRole implements TextRole
         $this->lexer->setInput($rawContent);
         $this->lexer->moveNext();
         $this->lexer->moveNext();
-        while ($this->lexer->token !== null) {
+        while ($this->lexer->token instanceof Token) {
             $token = $this->lexer->token;
             switch ($token->type) {
                 case InlineLexer::EMBEDED_URL_START:

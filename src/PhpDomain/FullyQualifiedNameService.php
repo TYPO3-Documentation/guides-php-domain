@@ -7,6 +7,9 @@ namespace T3Docs\GuidesPhpDomain\PhpDomain;
 use T3Docs\GuidesPhpDomain\Nodes\FullyQualifiedNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
 
+/**
+ * @see \T3Docs\GuidesPhpDomain\Tests\PhpDomain\FullyQualifiedNameServiceTest
+ */
 class FullyQualifiedNameService
 {
     /**
@@ -17,7 +20,7 @@ class FullyQualifiedNameService
     /**
      * @see https://regex101.com/r/bt7r5S/1
      */
-    public const FULL_NAME_PATTERN_REGEX = '/^(.+\\\\)([^\\\\]+)$/';
+    final public const FULL_NAME_PATTERN_REGEX = '/^(.+\\\\)([^\\\\]+)$/';
 
     public function __construct(
         private readonly NamespaceRepository $namespaceRepository
@@ -46,7 +49,7 @@ class FullyQualifiedNameService
         $matches = [];
         if ($this->isFullyQualifiedName($name, $matches)) {
             $namespace = $matches[1];
-            $namespace = trim($namespace, '\\');
+            $namespace = trim((string) $namespace, '\\');
             $baseName = $matches[2];
             return new FullyQualifiedNameNode($baseName, new PhpNamespaceNode($namespace));
         }

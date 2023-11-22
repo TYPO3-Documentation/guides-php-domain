@@ -40,11 +40,10 @@ final class MethodDirective extends SubDirective
         $name = $this->methodNameService->getMethodName(trim($directive->getData()));
         $id = $this->anchorReducer->reduceAnchor($name->toString());
 
-        $methodNode = new PhpMethodNode(
+        return new PhpMethodNode(
             $id,
             $name,
             $collectionNode->getChildren(),
         );
-        return $methodNode;
     }
 }
