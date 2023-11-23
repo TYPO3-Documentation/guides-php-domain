@@ -18,7 +18,7 @@ use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
 use function dirname;
 use function phpDocumentor\Guides\DependencyInjection\template;
 
-final class PhpDomainExtension extends Extension implements PrependExtensionInterface
+final class GuidesPhpDomainExtension extends Extension implements PrependExtensionInterface
 {
     /** @param mixed[] $configs */
     public function load(array $configs, ContainerBuilder $container): void
