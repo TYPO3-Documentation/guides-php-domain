@@ -9,7 +9,7 @@ use phpDocumentor\Guides\Cli\DependencyInjection\ContainerFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use T3Docs\GuidesPhpDomain\DependencyInjection\PhpDomainExtension;
+use T3Docs\GuidesPhpDomain\DependencyInjection\GuidesPhpDomainExtension;
 
 abstract class ApplicationTestCase extends TestCase
 {
@@ -34,7 +34,7 @@ abstract class ApplicationTestCase extends TestCase
     {
         $containerFactory = new ContainerFactory([
             new ApplicationExtension(),
-            new PhpDomainExtension(),
+            new GuidesPhpDomainExtension(),
             ...$extraExtensions,
         ]);
 

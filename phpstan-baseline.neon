@@ -3,12 +3,12 @@ parameters:
 		-
 			message: "#^Function phpDocumentor\\\\Guides\\\\DependencyInjection\\\\template not found\\.$#"
 			count: 5
-			path: src/DependencyInjection/PhpDomainExtension.php
+			path: src/DependencyInjection/GuidesPhpDomainExtension.php
 
 		-
 			message: "#^Used function phpDocumentor\\\\Guides\\\\DependencyInjection\\\\template not found\\.$#"
 			count: 1
-			path: src/DependencyInjection/PhpDomainExtension.php
+			path: src/DependencyInjection/GuidesPhpDomainExtension.php
 
 		-
 			message: "#^Method T3Docs\\\\GuidesPhpDomain\\\\Tests\\\\ApplicationTestCase\\:\\:prepareContainer\\(\\) has parameter \\$extraExtensions with no value type specified in iterable type array\\.$#"
