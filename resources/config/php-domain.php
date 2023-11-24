@@ -7,6 +7,7 @@ use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\Productions\DirectiveContentRule;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
+use T3Docs\GuidesPhpDomain\Directives\Php\ClassDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ConstDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
@@ -29,6 +30,7 @@ return static function (ContainerConfigurator $container): void {
         ->bind('$startingRule', service(DirectiveContentRule::class))
         ->instanceof(BaseDirective::class)
         ->tag('phpdoc.guides.directive')
+        ->set(ClassDirective::class)
         ->set(ConstDirective::class)
         ->set(EnumDirective::class)
         ->set(GlobalDirective::class)
