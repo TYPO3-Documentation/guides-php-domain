@@ -2,7 +2,7 @@ parameters:
 	ignoreErrors:
 		-
 			message: "#^Function phpDocumentor\\\\Guides\\\\DependencyInjection\\\\template not found\\.$#"
-			count: 5
+			count: 7
 			path: src/DependencyInjection/GuidesPhpDomainExtension.php
 
 		-

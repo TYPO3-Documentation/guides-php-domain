@@ -10,8 +10,10 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use T3Docs\GuidesPhpDomain\Nodes\FullyQualifiedNameNode;
+use T3Docs\GuidesPhpDomain\Nodes\MemberNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\MethodNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
+use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMethodNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
 
@@ -39,8 +41,10 @@ final class GuidesPhpDomainExtension extends Extension implements PrependExtensi
                 'templates' => [
                     template(FullyQualifiedNameNode::class, 'body/directive/php/fullyQualifiedName.html.twig'),
                     template(PhpComponentNode::class, 'body/directive/php/component.html.twig'),
+                    template(PhpConstNode::class, 'body/directive/php/const.html.twig'),
                     template(PhpNamespaceNode::class, 'body/directive/php/namespace.html.twig'),
                     template(PhpMethodNode::class, 'body/directive/php/method.html.twig'),
+                    template(MemberNameNode::class, 'body/directive/php/memberName.html.twig'),
                     template(MethodNameNode::class, 'body/directive/php/methodName.html.twig'),
                 ],
             ],
