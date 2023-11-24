@@ -16,6 +16,7 @@ use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpGlobalNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMethodNode;
+use T3Docs\GuidesPhpDomain\Nodes\PhpModifierNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
 
 use function dirname;
@@ -46,6 +47,7 @@ final class GuidesPhpDomainExtension extends Extension implements PrependExtensi
                     template(PhpGlobalNode::class, 'body/directive/php/global.html.twig'),
                     template(PhpNamespaceNode::class, 'body/directive/php/namespace.html.twig'),
                     template(PhpMethodNode::class, 'body/directive/php/method.html.twig'),
+                    template(PhpModifierNode::class, 'body/directive/php/modifier.html.twig'),
                     template(MemberNameNode::class, 'body/directive/php/memberName.html.twig'),
                     template(MethodNameNode::class, 'body/directive/php/methodName.html.twig'),
                 ],
