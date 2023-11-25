@@ -8,6 +8,7 @@ use phpDocumentor\Guides\RestructuredText\Parser\Productions\DirectiveContentRul
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 use T3Docs\GuidesPhpDomain\Directives\Php\ConstDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 use T3Docs\GuidesPhpDomain\Directives\Php\EnumDirective;
@@ -30,6 +31,7 @@ return static function (ContainerConfigurator $container): void {
         ->tag('phpdoc.guides.directive')
         ->set(ConstDirective::class)
         ->set(EnumDirective::class)
+        ->set(GlobalDirective::class)
         ->set(InterfaceDirective::class)
         ->set(MethodDirective::class)
         ->set(NamespaceDirective::class)
