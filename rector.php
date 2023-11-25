@@ -31,8 +31,6 @@ return static function (RectorConfig $config): void {
     ]);
     $config->skip([
         PreferPHPUnitThisCallRector::class,
-        ChangeAndIfToEarlyReturnRector::class => [
-            __DIR__ . '/src/Directives/Php/ClassDirective.php',
-        ]
+        ChangeAndIfToEarlyReturnRector::class
     ]);
 };
