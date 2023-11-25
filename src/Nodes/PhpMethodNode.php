@@ -11,11 +11,13 @@ final class PhpMethodNode extends PhpMemberNode
     private const TYPE = 'method';
     /**
      * @param Node[] $value
+     * @param PhpModifierNode[] $modifiers
      */
     public function __construct(
         string $id,
         private readonly MethodNameNode $methodName,
         array $value = [],
+        private readonly array $modifiers = [],
     ) {
         parent::__construct($id, self::TYPE, $methodName->toString(), $value);
     }
@@ -23,5 +25,13 @@ final class PhpMethodNode extends PhpMemberNode
     public function getMethodName(): MethodNameNode
     {
         return $this->methodName;
+    }
+
+    /**
+     * @return PhpModifierNode[]
+     */
+    public function getModifiers(): array
+    {
+        return $this->modifiers;
     }
 }
