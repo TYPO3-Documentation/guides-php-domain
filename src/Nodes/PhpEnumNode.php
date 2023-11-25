@@ -12,7 +12,7 @@ final class PhpEnumNode extends PhpComponentNode
 
     /**
      * @param list<PhpMemberNode> $members
-     * @param list<string> $modifiers
+     * @param list<PhpModifierNode> $modifiers
      * @param list<Node> $value
      */
     public function __construct(

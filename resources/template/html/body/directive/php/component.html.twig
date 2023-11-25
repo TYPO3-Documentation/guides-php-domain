@@ -1,6 +1,9 @@
 <dl class="php {{ node.type }}">
     <dt class="sig sig-object php"
         id="{{ node.id }}">
+        {% for modifier in node.modifiers -%}
+            {{- renderNode(modifier) }}{{ ' ' -}}
+        {%- endfor -%}
         <em class="property"><span class="pre">{{ node.type }}</span> </em>
         {{ renderNode(node.name) }}
     </dt>

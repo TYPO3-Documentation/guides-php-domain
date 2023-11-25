@@ -11,7 +11,7 @@ final class PhpClassNode extends PhpComponentNode
     private const TYPE = 'class';
     /**
      * @param list<PhpMemberNode> $members
-     * @param list<string> $modifiers
+     * @param list<PhpModifierNode> $modifiers
      * @param list<Node> $value
      */
     public function __construct(
