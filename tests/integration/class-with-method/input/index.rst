@@ -1,5 +1,5 @@
 =================================
-PHP Class with implicit namespace
+PHP Class with explicit namespace
 =================================
 
 ..  php:class:: TYPO3\CMS\Core\Test
