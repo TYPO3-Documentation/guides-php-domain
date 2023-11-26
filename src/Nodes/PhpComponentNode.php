@@ -17,7 +17,7 @@ abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode
 {
     /**
      * @param list<PhpMemberNode> $members
-     * @param list<string> $modifiers
+     * @param list<PhpModifierNode> $modifiers
      * @param list<Node> $value
      */
     public function __construct(
@@ -88,7 +88,7 @@ abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode
     }
 
     /**
-     * @return list<string>
+     * @return list<PhpModifierNode>
      */
     public function getModifiers(): array
     {

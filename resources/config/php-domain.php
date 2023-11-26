@@ -11,6 +11,7 @@ use T3Docs\GuidesPhpDomain\Directives\Php\ClassDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ConstDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\StaticMethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
+use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 use T3Docs\GuidesPhpDomain\Directives\Php\EnumDirective;
@@ -41,6 +42,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(StaticMethodDirective::class)
         ->set(FullyQualifiedNameService::class)
         ->set(MethodNameService::class)
+        ->set(ModifierService::class)
         ->set(NamespaceRepository::class)
 
         ->set(InterfaceTextRole::class)

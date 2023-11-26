@@ -48,7 +48,6 @@ final class InterfaceDirective extends SubDirective
             $collectionNode->getChildren(),
             null,
             [],
-            [],
         );
     }
 }
