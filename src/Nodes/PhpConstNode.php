@@ -12,11 +12,13 @@ final class PhpConstNode extends PhpMemberNode
 
     /**
      * @param Node[] $value
+     * @param PhpModifierNode[] $modifiers
      */
     public function __construct(
         string                          $id,
         private readonly MemberNameNode $memberName,
         array                           $value = [],
+        private readonly array $modifiers = [],
     ) {
         parent::__construct($id, self::TYPE, $memberName->toString(), $value);
     }
@@ -24,5 +26,13 @@ final class PhpConstNode extends PhpMemberNode
     public function getMemberName(): MemberNameNode
     {
         return $this->memberName;
+    }
+
+    /**
+     * @return PhpModifierNode[]
+     */
+    public function getModifiers(): array
+    {
+        return $this->modifiers;
     }
 }
