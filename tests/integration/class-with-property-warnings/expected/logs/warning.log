@@ -1,0 +1,2 @@
+app.WARNING: A PHP property cannot be private and public at the same time.
+app.WARNING: A PHP property cannot be static and readonly at the same time.
