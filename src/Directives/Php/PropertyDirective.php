@@ -30,7 +30,6 @@ final class PropertyDirective extends SubDirective
         ['private', 'protected'],
         ['private', 'public'],
         ['protected', 'public'],
-        ['protected', 'public'],
         ['static', 'readonly'],
     ];
     public function __construct(
@@ -66,6 +65,10 @@ final class PropertyDirective extends SubDirective
         $name = new MemberNameNode(trim($directive->getData()));
         $id = $this->anchorReducer->reduceAnchor($name->toString());
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
+
+        if ($directive->getName() !== 'php:property') {
+            $this->logger->warning(sprintf('Using directive `%s` is deprecated, use directive `php:property` instead.', $directive->getName()), $blockContext->getDocumentParserContext()->getLoggerInformation());
+        }
 
         foreach ($this->illegalCombinations as $combination) {
             if ($directive->hasOption($combination[0]) && $directive->hasOption($combination[1])) {
