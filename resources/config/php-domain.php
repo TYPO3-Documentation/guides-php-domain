@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 use T3Docs\GuidesPhpDomain\Directives\Php\ClassDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ConstDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\ExceptionDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\StaticMethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
@@ -35,6 +36,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(ClassDirective::class)
         ->set(ConstDirective::class)
         ->set(EnumDirective::class)
+        ->set(ExceptionDirective::class)
         ->set(GlobalDirective::class)
         ->set(InterfaceDirective::class)
         ->set(MethodDirective::class)
