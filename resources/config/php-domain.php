@@ -13,6 +13,7 @@ use T3Docs\GuidesPhpDomain\Directives\Php\ExceptionDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\PropertyDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\StaticMethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\TraitDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -45,6 +46,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(NamespaceDirective::class)
         ->set(PropertyDirective::class)
         ->set(StaticMethodDirective::class)
+        ->set(TraitDirective::class)
         ->set(FullyQualifiedNameService::class)
         ->set(MethodNameService::class)
         ->set(ModifierService::class)
