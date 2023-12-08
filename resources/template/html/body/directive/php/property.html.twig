@@ -1,0 +1,10 @@
+<dl class="php property">
+    <dt class="sig sig-object php" id="{{ node.id }}">
+        {% for modifier in node.modifiers -%}
+            {{- renderNode(modifier) }}{{ ' ' -}}
+        {%- endfor -%}
+        {% if node.phpType -%}<span class="pre">{{ node.phpType }}</span> {% endif -%}
+        {{ renderNode(node.memberName) }}
+    </dt>
+    <dd>{{ renderNode(node.value) }}</dd>
+</dl>

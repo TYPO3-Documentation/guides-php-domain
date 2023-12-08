@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use T3Docs\GuidesPhpDomain\Directives\Php\ClassDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ConstDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ExceptionDirective;
+use T3Docs\GuidesPhpDomain\Directives\Php\PropertyDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\StaticMethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
@@ -34,6 +35,7 @@ return static function (ContainerConfigurator $container): void {
         ->instanceof(BaseDirective::class)
         ->tag('phpdoc.guides.directive')
         ->set(ClassDirective::class)
+        ->set(ClassDirective::class)
         ->set(ConstDirective::class)
         ->set(EnumDirective::class)
         ->set(ExceptionDirective::class)
@@ -41,6 +43,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(InterfaceDirective::class)
         ->set(MethodDirective::class)
         ->set(NamespaceDirective::class)
+        ->set(PropertyDirective::class)
         ->set(StaticMethodDirective::class)
         ->set(FullyQualifiedNameService::class)
         ->set(MethodNameService::class)
