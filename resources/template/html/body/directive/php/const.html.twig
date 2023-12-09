@@ -3,7 +3,7 @@
         {% for modifier in node.modifiers -%}
             {{- renderNode(modifier) }}{{ ' ' -}}
         {%- endfor -%}
-        <em class="property"><span class="pre">constant</span></em>
+        <em class="property"><span class="pre">const</span></em>
         {{ renderNode(node.memberName) }}
     </dt>
     <dd>{{ renderNode(node.value) }}</dd>
