@@ -61,11 +61,17 @@ final class ConstDirective extends SubDirective
             }
         }
 
+        $type = null;
+        if ($directive->hasOption('type')) {
+            $type = $directive->getOption('type')->toString();
+        }
+
         return new PhpConstNode(
             $id,
             $name,
             $collectionNode->getChildren(),
             $modifiers,
+            $type,
         );
     }
 }
