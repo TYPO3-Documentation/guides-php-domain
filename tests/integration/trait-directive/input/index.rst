@@ -6,6 +6,9 @@ PHP Trait
 
 ..  php:trait:: ContextAwareTrait
 
+    ..  php:const:: FLAG_1
+        :public:
+
     ..  php:method:: setContext(Context $context)
 
     ..  php:method:: getContext()
