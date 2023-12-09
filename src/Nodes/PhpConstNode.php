@@ -19,6 +19,7 @@ final class PhpConstNode extends PhpMemberNode
         private readonly MemberNameNode $memberName,
         array                           $value = [],
         private readonly array $modifiers = [],
+        private readonly string|null    $phpType = null,
     ) {
         parent::__construct($id, self::TYPE, $memberName->toString(), $value);
     }
@@ -34,5 +35,10 @@ final class PhpConstNode extends PhpMemberNode
     public function getModifiers(): array
     {
         return $this->modifiers;
+    }
+
+    public function getPhpType(): ?string
+    {
+        return $this->phpType;
     }
 }
