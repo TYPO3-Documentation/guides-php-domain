@@ -12,6 +12,7 @@ use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
 use phpDocumentor\Guides\RestructuredText\Parser\Productions\Rule;
 use phpDocumentor\Guides\RestructuredText\TextRoles\GenericLinkProvider;
+use Psr\Log\LoggerInterface;
 use T3Docs\GuidesPhpDomain\Nodes\PhpEnumNode;
 use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 
@@ -22,6 +23,7 @@ final class EnumDirective extends SubDirective
         GenericLinkProvider $genericLinkProvider,
         private readonly FullyQualifiedNameService $fullyQualifiedNameService,
         private readonly AnchorReducer $anchorReducer,
+        private readonly LoggerInterface $logger,
     ) {
         parent::__construct($startingRule);
         $genericLinkProvider->addGenericLink($this->getName(), $this->getName());
@@ -38,9 +40,24 @@ final class EnumDirective extends SubDirective
         Directive $directive,
     ): Node|null {
         $name = trim($directive->getData());
-        $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName($name, true);
+        $type = null;
+
+        if (str_contains($name, ':')) {
+            [$name, $type] = explode(':', $name, 2);
+            $type = trim($type);
+            $this->logger->warning('Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead.', $blockContext->getDocumentParserContext()->getLoggerInformation());
+        }
+
+        $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName(trim($name), true);
 
         $id = $this->anchorReducer->reduceAnchor($fqn->toString());
+
+        if ($directive->hasOption('type')) {
+            if ($type != null) {
+                $this->logger->warning('The type of the backed enum was set twice. The type from the option will be prefered.', $blockContext->getDocumentParserContext()->getLoggerInformation());
+            }
+            $type = $directive->getOption('type')->toString();
+        }
 
         return new PhpEnumNode(
             $id,
@@ -49,6 +66,7 @@ final class EnumDirective extends SubDirective
             null,
             [],
             [],
+            $type,
         );
     }
 }

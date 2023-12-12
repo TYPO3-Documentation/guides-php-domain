@@ -5,7 +5,7 @@
             {{- renderNode(modifier) }}{{ ' ' -}}
         {%- endfor -%}
         <em class="property"><span class="pre">{{ node.type }}</span> </em>
-        {{ renderNode(node.name) }}
+        {{ renderNode(node.name) }} {%- if node.type == 'enum' and node.phpType -%}<span class="pre"> : {{ node.phpType }}</span> {% endif -%}
     </dt>
     <dd>
         {{ renderNode(node.value) }}

@@ -12,8 +12,10 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use T3Docs\GuidesPhpDomain\Nodes\FullyQualifiedNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\MemberNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\MethodNameNode;
+use T3Docs\GuidesPhpDomain\Nodes\PhpCaseNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
+use T3Docs\GuidesPhpDomain\Nodes\PhpEnumNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpGlobalNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMethodNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpModifierNode;
@@ -44,6 +46,7 @@ final class GuidesPhpDomainExtension extends Extension implements PrependExtensi
                 'base_template_paths' => [dirname(__DIR__, 2) . '/resources/template/html'],
                 'templates' => [
                     template(FullyQualifiedNameNode::class, 'body/directive/php/fullyQualifiedName.html.twig'),
+                    template(PhpCaseNode::class, 'body/directive/php/case.html.twig'),
                     template(PhpComponentNode::class, 'body/directive/php/component.html.twig'),
                     template(PhpConstNode::class, 'body/directive/php/const.html.twig'),
                     template(PhpGlobalNode::class, 'body/directive/php/global.html.twig'),
