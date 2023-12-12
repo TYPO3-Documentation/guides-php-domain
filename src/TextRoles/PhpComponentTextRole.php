@@ -23,7 +23,7 @@ abstract class PhpComponentTextRole implements TextRole
     private readonly InlineLexer $lexer;
 
     public function __construct(
-        private readonly LoggerInterface $logger,
+        protected readonly LoggerInterface $logger,
         private readonly AnchorReducer $anchorReducer,
     ) {
         // Do not inject the $lexer. It contains a state.

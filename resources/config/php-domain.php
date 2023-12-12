@@ -17,6 +17,7 @@ use T3Docs\GuidesPhpDomain\Directives\Php\TraitDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 use T3Docs\GuidesPhpDomain\TextRoles\ClassTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\ExceptionTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\TraitTextRole;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -58,6 +59,8 @@ return static function (ContainerConfigurator $container): void {
         ->set(ClassTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(EnumTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(ExceptionTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(InterfaceTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
