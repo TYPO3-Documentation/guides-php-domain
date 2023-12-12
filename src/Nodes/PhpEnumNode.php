@@ -22,7 +22,13 @@ final class PhpEnumNode extends PhpComponentNode
         PhpNamespaceNode|null $namespace = null,
         array $members = [],
         array $modifiers = [],
+        private readonly ?string $phpType = null,
     ) {
         parent::__construct($id, self::TYPE, $name, $value, $namespace, $members, $modifiers);
+    }
+
+    public function getPhpType(): ?string
+    {
+        return $this->phpType;
     }
 }
