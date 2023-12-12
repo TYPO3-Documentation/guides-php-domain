@@ -30,6 +30,9 @@ abstract class PhpComponentTextRole implements TextRole
         $this->lexer = new InlineLexer();
     }
 
+    /**
+     * @return list<string>
+     */
     public function getAliases(): array
     {
         return [];
