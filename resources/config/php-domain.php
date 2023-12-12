@@ -16,6 +16,7 @@ use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\TraitDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 use T3Docs\GuidesPhpDomain\TextRoles\ClassTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 use T3Docs\GuidesPhpDomain\Directives\Php\EnumDirective;
@@ -54,6 +55,8 @@ return static function (ContainerConfigurator $container): void {
         ->set(NamespaceRepository::class)
 
         ->set(ClassTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(EnumTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(InterfaceTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
