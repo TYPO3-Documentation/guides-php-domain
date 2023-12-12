@@ -13,9 +13,9 @@ use phpDocumentor\Guides\RestructuredText\Parser\InlineLexer;
 use phpDocumentor\Guides\RestructuredText\TextRoles\TextRole;
 use Psr\Log\LoggerInterface;
 
-final class InterfaceTextRole extends PhpComponentTextRole
+final class EnumTextRole extends PhpComponentTextRole
 {
-    private const TYPE = 'interface';
+    private const TYPE = 'enum';
 
     public function getName(): string
     {
