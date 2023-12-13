@@ -91,9 +91,9 @@ final class MethodDirective extends SubDirective
 
                                 ..  :php:method:: %s
                                     :returns: Your Description
-                                ", $name), $blockContext->getDocumentParserContext()->getLoggerInformation());
+                                ", $name), $blockContext->getLoggerInformation());
         } else {
-            $this->logger->warning(sprintf('The return description of method %s has been given multiple times', $name), $blockContext->getDocumentParserContext()->getLoggerInformation());
+            $this->logger->warning(sprintf('The return description of method %s has been given multiple times', $name), $blockContext->getLoggerInformation());
         }
         return $returnInlineNode;
     }
@@ -110,7 +110,7 @@ final class MethodDirective extends SubDirective
 
         foreach ($this->illegalCombinations as $combination) {
             if ($directive->hasOption($combination[0]) && $directive->hasOption($combination[1])) {
-                $this->logger->warning(sprintf('A PHP method cannot be %s and %s at the same time.', $combination[0], $combination[1]), $blockContext->getDocumentParserContext()->getLoggerInformation());
+                $this->logger->warning(sprintf('A PHP method cannot be %s and %s at the same time.', $combination[0], $combination[1]), $blockContext->getLoggerInformation());
             }
         }
 

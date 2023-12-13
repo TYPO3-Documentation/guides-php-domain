@@ -67,12 +67,12 @@ final class PropertyDirective extends SubDirective
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
 
         if ($directive->getName() !== 'php:property') {
-            $this->logger->warning(sprintf('Using directive `%s` is deprecated, use directive `php:property` instead.', $directive->getName()), $blockContext->getDocumentParserContext()->getLoggerInformation());
+            $this->logger->warning(sprintf('Using directive `%s` is deprecated, use directive `php:property` instead.', $directive->getName()), $blockContext->getLoggerInformation());
         }
 
         foreach ($this->illegalCombinations as $combination) {
             if ($directive->hasOption($combination[0]) && $directive->hasOption($combination[1])) {
-                $this->logger->warning(sprintf('A PHP property cannot be %s and %s at the same time.', $combination[0], $combination[1]), $blockContext->getDocumentParserContext()->getLoggerInformation());
+                $this->logger->warning(sprintf('A PHP property cannot be %s and %s at the same time.', $combination[0], $combination[1]), $blockContext->getLoggerInformation());
             }
         }
         $type = null;

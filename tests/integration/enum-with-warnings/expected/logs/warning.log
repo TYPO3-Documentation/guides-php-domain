@@ -1,3 +1,3 @@
-app.WARNING: Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead. {"rst-file":"index.rst"} []
-app.WARNING: The type of the backed enum was set twice. The type from the option will be prefered. {"rst-file":"index.rst"} []
-app.WARNING: Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead. {"rst-file":"index.rst"} []
+app.WARNING: Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead. {"rst-file":"index.rst","currentLineNumber":21} []
+app.WARNING: The type of the backed enum was set twice. The type from the option will be prefered. {"rst-file":"index.rst","currentLineNumber":21} []
+app.WARNING: Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead. {"rst-file":"index.rst","currentLineNumber":30} []
