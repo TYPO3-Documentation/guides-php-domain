@@ -57,7 +57,7 @@ final class ConstDirective extends SubDirective
 
         foreach ($this->illegalCombinations as $combination) {
             if ($directive->hasOption($combination[0]) && $directive->hasOption($combination[1])) {
-                $this->logger->warning(sprintf('A PHP constant cannot be %s and %s at the same time.', $combination[0], $combination[1]), $blockContext->getDocumentParserContext()->getLoggerInformation());
+                $this->logger->warning(sprintf('A PHP constant cannot be %s and %s at the same time.', $combination[0], $combination[1]), $blockContext->getLoggerInformation());
             }
         }
 

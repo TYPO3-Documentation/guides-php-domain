@@ -1,1 +1,1 @@
-app.WARNING: Directive `.. php:staticmethod::` is deprecated use directive `.. php:method::` with option `:static:` instead.  {"rst-file":"index.rst"} []
+app.WARNING: Directive `.. php:staticmethod::` is deprecated use directive `.. php:method::` with option `:static:` instead.  {"rst-file":"index.rst","currentLineNumber":5} []

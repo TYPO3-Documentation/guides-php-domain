@@ -45,7 +45,7 @@ final class EnumDirective extends SubDirective
         if (str_contains($name, ':')) {
             [$name, $type] = explode(':', $name, 2);
             $type = trim($type);
-            $this->logger->warning('Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead.', $blockContext->getDocumentParserContext()->getLoggerInformation());
+            $this->logger->warning('Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead.', $blockContext->getLoggerInformation());
         }
 
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName(trim($name), true);
@@ -54,7 +54,7 @@ final class EnumDirective extends SubDirective
 
         if ($directive->hasOption('type')) {
             if ($type != null) {
-                $this->logger->warning('The type of the backed enum was set twice. The type from the option will be prefered.', $blockContext->getDocumentParserContext()->getLoggerInformation());
+                $this->logger->warning('The type of the backed enum was set twice. The type from the option will be prefered.', $blockContext->getLoggerInformation());
             }
             $type = $directive->getOption('type')->toString();
         }

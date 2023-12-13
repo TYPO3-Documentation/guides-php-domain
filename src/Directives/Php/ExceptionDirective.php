@@ -54,7 +54,7 @@ final class ExceptionDirective extends SubDirective
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
 
         if ($directive->hasOption('abstract') && $directive->hasOption('final')) {
-            $this->logger->warning('A PHP class cannot be abstract and final at the same time.', $blockContext->getDocumentParserContext()->getLoggerInformation());
+            $this->logger->warning('A PHP class cannot be abstract and final at the same time.', $blockContext->getLoggerInformation());
         }
 
         return new PhpExceptionNode(
