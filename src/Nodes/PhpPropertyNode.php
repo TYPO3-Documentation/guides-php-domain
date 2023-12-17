@@ -8,7 +8,7 @@ use phpDocumentor\Guides\Nodes\Node;
 
 final class PhpPropertyNode extends PhpMemberNode
 {
-    private const TYPE = 'const';
+    private const TYPE = 'property';
 
     /**
      * @param Node[] $value
