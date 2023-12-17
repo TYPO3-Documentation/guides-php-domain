@@ -17,6 +17,7 @@ use T3Docs\GuidesPhpDomain\Directives\Php\StaticMethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\TraitDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
+use T3Docs\GuidesPhpDomain\TextRoles\CaseTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ClassTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ConstTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
@@ -64,6 +65,8 @@ return static function (ContainerConfigurator $container): void {
         ->tag('phpdoc.guides.compiler.nodeTransformers')
 
         ->set(ClassTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(CaseTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(ConstTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])

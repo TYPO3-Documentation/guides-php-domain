@@ -18,7 +18,7 @@ abstract class PhpComponentTextRole implements TextRole
     /**
      * @see https://regex101.com/r/OyN05v/1
      */
-    protected const INTERLINK_NAME_REGEX = '/^([a-zA-Z0-9]+):(.*$)/';
+    protected const INTERLINK_NAME_REGEX = '/^([a-zA-Z0-9]+):([^:]+.*$)/';
 
     private readonly InlineLexer $lexer;
 

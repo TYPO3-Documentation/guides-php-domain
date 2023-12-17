@@ -8,7 +8,7 @@ use phpDocumentor\Guides\Nodes\Node;
 
 final class PhpCaseNode extends PhpMemberNode
 {
-    private const TYPE = 'const';
+    private const TYPE = 'case';
 
     /**
      * @param Node[] $value
