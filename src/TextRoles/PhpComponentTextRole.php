@@ -18,7 +18,7 @@ abstract class PhpComponentTextRole implements TextRole
     /**
      * @see https://regex101.com/r/OyN05v/1
      */
-    private const INTERLINK_NAME_REGEX = '/^([a-zA-Z0-9]+):(.*$)/';
+    protected const INTERLINK_NAME_REGEX = '/^([a-zA-Z0-9]+):(.*$)/';
 
     private readonly InlineLexer $lexer;
 
@@ -94,11 +94,11 @@ abstract class PhpComponentTextRole implements TextRole
             $value = null;
         }
 
-        return $this->createNode($referenceTarget, $value, $role);
+        return $this->createNode($documentParserContext, $referenceTarget, $value, $role);
     }
 
     /** @return ReferenceNode */
-    protected function createNode(string $referenceTarget, string|null $referenceName, string $role): AbstractLinkInlineNode
+    protected function createNode(DocumentParserContext $documentParserContext, string $referenceTarget, string|null $referenceName, string $role): AbstractLinkInlineNode
     {
         if (preg_match(self::INTERLINK_NAME_REGEX, $referenceTarget, $matches)) {
             $interlinkDomain = $matches[1];

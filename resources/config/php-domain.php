@@ -7,6 +7,7 @@ use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\Productions\DirectiveContentRule;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
+use T3Docs\GuidesPhpDomain\Compiler\NodeTransformers\MemberNodeTransformer;
 use T3Docs\GuidesPhpDomain\Directives\Php\CaseDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ClassDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\ConstDirective;
@@ -19,6 +20,7 @@ use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 use T3Docs\GuidesPhpDomain\TextRoles\ClassTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ExceptionTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\MethodTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\TraitTextRole;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -57,6 +59,9 @@ return static function (ContainerConfigurator $container): void {
         ->set(ModifierService::class)
         ->set(NamespaceRepository::class)
 
+        ->set(MemberNodeTransformer::class)
+        ->tag('phpdoc.guides.compiler.nodeTransformers')
+
         ->set(ClassTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(EnumTextRole::class)
@@ -64,6 +69,8 @@ return static function (ContainerConfigurator $container): void {
         ->set(ExceptionTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(InterfaceTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(MethodTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(TraitTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])

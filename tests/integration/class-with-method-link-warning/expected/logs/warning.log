@@ -1,0 +1,4 @@
+app.WARNING: \TYPO3\CMS\Core\Test:: is not a valid method name. Use the form "\Vendor\Path\Class::method" or "\Vendor\Path\Class::method(int $param)" {"rst-file":"index.rst"} []
+app.WARNING: \TYPO3\CMS\Core\Test->getDate is not a valid method name. Use the form "\Vendor\Path\Class::method" or "\Vendor\Path\Class::method(int $param)" {"rst-file":"index.rst"} []
+app.WARNING: Nested PHP domain components (php:class, php:interface, php:enum etc) are not supported.
+app.WARNING: Reference typo3-cms-core-test could not be resolved in index {"rst-file":"index"} []
