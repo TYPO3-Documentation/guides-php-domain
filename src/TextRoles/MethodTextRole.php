@@ -56,4 +56,17 @@ final class MethodTextRole extends PhpComponentTextRole
     {
         return self::TYPE;
     }
+
+
+    /**
+     * @return list<string>
+     */
+    public function getAliases(): array
+    {
+        return [
+            'meth',
+            'function',
+            'func',
+        ];
+    }
 }
