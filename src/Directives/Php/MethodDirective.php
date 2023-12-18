@@ -86,7 +86,7 @@ final class MethodDirective extends SubDirective
     {
         if (!$returnInlineNode instanceof \phpDocumentor\Guides\Nodes\CollectionNode) {
             $returnInlineNode = new CollectionNode($fieldListItem->getChildren());
-            $this->logger->warning(sprintf("The definition of a return description as field list is deprecated. Define it as an option of the method \n
+            $this->logger->info(sprintf("The definition of a return description as field list is deprecated. Define it as an option of the method \n
                                 for example:
 
                                 ..  :php:method:: %s

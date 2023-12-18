@@ -45,7 +45,7 @@ final class EnumDirective extends SubDirective
         if (str_contains($name, ':')) {
             [$name, $type] = explode(':', $name, 2);
             $type = trim($type);
-            $this->logger->warning('Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead.', $blockContext->getLoggerInformation());
+            $this->logger->info('Passing the type of a backed enum directly with the name is deprecated. Use option :type: instead.', $blockContext->getLoggerInformation());
         }
 
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName(trim($name), true);

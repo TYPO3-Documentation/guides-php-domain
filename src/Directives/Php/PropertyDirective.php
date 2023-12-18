@@ -67,7 +67,7 @@ final class PropertyDirective extends SubDirective
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
 
         if ($directive->getName() !== 'php:property') {
-            $this->logger->warning(sprintf('Using directive `%s` is deprecated, use directive `php:property` instead.', $directive->getName()), $blockContext->getLoggerInformation());
+            $this->logger->info(sprintf('Using directive `%s` is deprecated, use directive `php:property` instead.', $directive->getName()), $blockContext->getLoggerInformation());
         }
 
         foreach ($this->illegalCombinations as $combination) {

@@ -39,7 +39,7 @@ final class MethodTextRole extends PhpComponentTextRole
     private function createNodeWithInterlink(DocumentParserContext $documentParserContext, string $referenceTarget, string $interlinkDomain, string|null $referenceName): ReferenceNode
     {
         if (!preg_match(self::METHOD_NAME_REGEX, $referenceTarget, $matches)) {
-            $this->logger->warning($referenceTarget . ' is not a valid method name. Use the form "\Vendor\Path\Class::method" or "\Vendor\Path\Class::method(int $param)"', $documentParserContext->getLoggerInformation());
+            $this->logger->info($referenceTarget . ' is not a valid method name. Use the form "\Vendor\Path\Class::method" or "\Vendor\Path\Class::method(int $param)"', $documentParserContext->getLoggerInformation());
             $id = $this->anchorReducer->reduceAnchor($referenceTarget);
             return new ReferenceNode($id, $referenceName ?? $referenceTarget, $interlinkDomain, 'php:' . $this->getName());
         }
