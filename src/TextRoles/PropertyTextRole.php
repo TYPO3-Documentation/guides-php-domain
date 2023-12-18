@@ -13,13 +13,12 @@ use phpDocumentor\Guides\RestructuredText\Parser\InlineLexer;
 use phpDocumentor\Guides\RestructuredText\TextRoles\TextRole;
 use Psr\Log\LoggerInterface;
 
-final class ParameterTextRole extends PhpComponentTextRole
+final class PropertyTextRole extends PhpComponentTextRole
 {
     private const TYPE = 'property';
 
     /**
-     * @see
-     * TYPO3\CMS\Core\Context\ContextAwareTrait::context
+     * @see https://regex101.com/r/Fj8X5Y/1
      */
     private const PROPERTY_NAME_REGEX = '/^([a-zA-Z0-9_\\\\]+)\\:\\:\\$?([a-zA-Z0-9_]+)$/';
     public function __construct(

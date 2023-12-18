@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Rector\CodeQuality\Rector\FuncCall\SimplifyRegexPatternRector;
 use Rector\Config\RectorConfig;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\EarlyReturn\Rector\If_\ChangeAndIfToEarlyReturnRector;
@@ -31,6 +32,7 @@ return static function (RectorConfig $config): void {
     ]);
     $config->skip([
         PreferPHPUnitThisCallRector::class,
-        ChangeAndIfToEarlyReturnRector::class
+        ChangeAndIfToEarlyReturnRector::class,
+        SimplifyRegexPatternRector::class
     ]);
 };

@@ -23,7 +23,7 @@ use T3Docs\GuidesPhpDomain\TextRoles\ConstTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ExceptionTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\MethodTextRole;
-use T3Docs\GuidesPhpDomain\TextRoles\ParameterTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\PropertyTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\TraitTextRole;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -79,7 +79,7 @@ return static function (ContainerConfigurator $container): void {
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(MethodTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
-        ->set(ParameterTextRole::class)
+        ->set(PropertyTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(TraitTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
