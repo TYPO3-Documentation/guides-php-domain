@@ -13,14 +13,14 @@ use phpDocumentor\Guides\RestructuredText\Parser\InlineLexer;
 use phpDocumentor\Guides\RestructuredText\TextRoles\TextRole;
 use Psr\Log\LoggerInterface;
 
-final class MethodTextRole extends PhpComponentTextRole
+final class ConstTextRole extends PhpComponentTextRole
 {
-    private const TYPE = 'method';
+    private const TYPE = 'const';
 
     /**
-     * @see https://regex101.com/r/EKNh6v/1
+     * @see https://regex101.com/r/Fj8X5Y/1
      */
-    private const METHOD_NAME_REGEX = '/^([a-zA-Z0-9_\\\]+)\:\:(\w+)(\(.*\)){0,1}$/';
+    private const CONST_NAME_REGEX = '/^([a-zA-Z0-9_\\\]+)\:\:(\w+)$/';
     public function __construct(
         LoggerInterface $logger,
         private readonly AnchorReducer $anchorReducer,
@@ -38,16 +38,16 @@ final class MethodTextRole extends PhpComponentTextRole
 
     private function createNodeWithInterlink(DocumentParserContext $documentParserContext, string $referenceTarget, string $interlinkDomain, string|null $referenceName): ReferenceNode
     {
-        if (!preg_match(self::METHOD_NAME_REGEX, $referenceTarget, $matches)) {
-            $this->logger->warning($referenceTarget . ' is not a valid method name. Use the form "\Vendor\Path\Class::method" or "\Vendor\Path\Class::method(int $param)"', $documentParserContext->getLoggerInformation());
+        if (!preg_match(self::CONST_NAME_REGEX, $referenceTarget, $matches)) {
+            $this->logger->warning($referenceTarget . ' is not a valid constant name. Use the form "\Vendor\Path\Class::CONST".', $documentParserContext->getLoggerInformation());
             $id = $this->anchorReducer->reduceAnchor($referenceTarget);
             return new ReferenceNode($id, $referenceName ?? $referenceTarget, $interlinkDomain, 'php:' . $this->getName());
         }
 
         $class = $matches[1];
-        $method = $matches[2];
+        $const = $matches[2];
 
-        $id = $this->anchorReducer->reduceAnchor($class . '::' . $method);
+        $id = $this->anchorReducer->reduceAnchor($class . '::' . $const);
 
         return new ReferenceNode($id, $referenceName ?? $referenceTarget, $interlinkDomain, 'php:' . $this->getName());
     }
@@ -57,16 +57,13 @@ final class MethodTextRole extends PhpComponentTextRole
         return self::TYPE;
     }
 
-
     /**
      * @return list<string>
      */
     public function getAliases(): array
     {
         return [
-            'meth',
-            'function',
-            'func',
+            'constant',
         ];
     }
 }

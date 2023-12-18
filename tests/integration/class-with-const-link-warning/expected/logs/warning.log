@@ -1,0 +1,2 @@
+app.WARNING: SecretSociety\EnigmaticClass\PI is not a valid constant name. Use the form "\Vendor\Path\Class::CONST". {"rst-file":"index.rst"} []
+app.WARNING: \SecretSociety\EnigmaticClass->SECRET_NUMBER is not a valid constant name. Use the form "\Vendor\Path\Class::CONST". {"rst-file":"index.rst"} []

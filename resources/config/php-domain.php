@@ -17,10 +17,13 @@ use T3Docs\GuidesPhpDomain\Directives\Php\StaticMethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\GlobalDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\TraitDirective;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
+use T3Docs\GuidesPhpDomain\TextRoles\CaseTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ClassTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\ConstTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ExceptionTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\MethodTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\PropertyTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\TraitTextRole;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -64,6 +67,10 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(ClassTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(CaseTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(ConstTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(EnumTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(ExceptionTextRole::class)
@@ -71,6 +78,8 @@ return static function (ContainerConfigurator $container): void {
         ->set(InterfaceTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(MethodTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(PropertyTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(TraitTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
