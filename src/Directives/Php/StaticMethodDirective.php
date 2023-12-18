@@ -40,7 +40,7 @@ final class StaticMethodDirective extends SubDirective
         CollectionNode $collectionNode,
         Directive $directive,
     ): Node|null {
-        $this->logger->warning(
+        $this->logger->info(
             'Directive `.. php:staticmethod::` is deprecated use directive `.. php:method::` with option `:static:` instead. ',
             $blockContext->getLoggerInformation()
         );

@@ -34,7 +34,7 @@ final class ExceptionTextRole extends PhpComponentTextRole
         string $rawContent,
     ): AbstractLinkInlineNode {
         if ($role !== 'php:exception') {
-            $this->logger->warning(sprintf('Text role :%s: is deprecated. Use :php:exception: instead. ', $role), $documentParserContext->getLoggerInformation());
+            $this->logger->info(sprintf('Text role :%s: is deprecated. Use :php:exception: instead. ', $role), $documentParserContext->getLoggerInformation());
         }
         return parent::processNode($documentParserContext, $role, $content, $rawContent);
     }
