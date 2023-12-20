@@ -19,16 +19,15 @@ abstract class PhpComponentTextRole implements TextRole
      * @see https://regex101.com/r/OyN05v/1
      */
     protected const INTERLINK_NAME_REGEX = '/^([a-zA-Z0-9]+):([^:]+.*$)/';
-
-    private readonly InlineLexer $lexer;
+    /**
+     * @see https://regex101.com/r/mqBxQj/1
+     */
+    protected const TEXTROLE_LINK_REGEX = '/^(.*?)(?:(?:\s|^)<([^<]+)>)?$/s';
 
     public function __construct(
         protected readonly LoggerInterface $logger,
         private readonly AnchorReducer $anchorReducer,
-    ) {
-        // Do not inject the $lexer. It contains a state.
-        $this->lexer = new InlineLexer();
-    }
+    ) {}
 
     /**
      * @return list<string>
@@ -44,57 +43,9 @@ abstract class PhpComponentTextRole implements TextRole
         string $content,
         string $rawContent,
     ): AbstractLinkInlineNode {
-        $referenceTarget = null;
-        $value = null;
+        $parsed = $this->extractEmbeddedUri($rawContent);
 
-        $part = '';
-        $this->lexer->setInput($rawContent);
-        $this->lexer->moveNext();
-        $this->lexer->moveNext();
-        while ($this->lexer->token instanceof Token) {
-            $token = $this->lexer->token;
-            switch ($token->type) {
-                case InlineLexer::EMBEDED_URL_START:
-                    $value = trim($part);
-                    $part = '';
-
-                    break;
-                case InlineLexer::EMBEDED_URL_END:
-                    if ($value === null) {
-                        // not inside the embedded URL
-                        $part .= $token->value;
-                        break;
-                    }
-
-                    if ($this->lexer->peek() !== null) {
-                        $this->logger->warning(
-                            sprintf(
-                                'Reference contains unexpected content after closing `>`: "%s"',
-                                $content,
-                            ),
-                            $documentParserContext->getLoggerInformation(),
-                        );
-                    }
-
-                    $referenceTarget = $part;
-                    $part = '';
-
-                    break 2;
-                default:
-                    $part .= $token->value;
-            }
-
-            $this->lexer->moveNext();
-        }
-
-        $value .= trim($part);
-
-        if ($referenceTarget === null) {
-            $referenceTarget = $value;
-            $value = null;
-        }
-
-        return $this->createNode($documentParserContext, $referenceTarget, $value, $role);
+        return $this->createNode($documentParserContext, $parsed['uri'], $parsed['text'], $role);
     }
 
     /** @return ReferenceNode */
@@ -109,5 +60,23 @@ abstract class PhpComponentTextRole implements TextRole
         }
 
         return new ReferenceNode($id, $referenceName ?? '', $interlinkDomain, 'php:' . $this->getName());
+    }
+
+    /** @return array{text:?string,uri:string} */
+    private function extractEmbeddedUri(string $text): array
+    {
+        preg_match(self::TEXTROLE_LINK_REGEX, $text, $matches);
+
+        $text = $matches[1] === '' ? null : $matches[1];
+        $uri = $matches[1];
+
+        if (isset($matches[2])) {
+            // there is an embedded URI, text and URI are different
+            $uri = $matches[2];
+        } else {
+            $text = null;
+        }
+
+        return ['text' => $text, 'uri' => $uri];
     }
 }
