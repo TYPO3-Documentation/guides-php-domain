@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace T3Docs\GuidesPhpDomain\Nodes;
 
 use phpDocumentor\Guides\Nodes\AbstractNode;
-use phpDocumentor\Guides\Nodes\Node;
 
 /**
  * Stores data on PHP modifiers for classes, methods, attributes, etc

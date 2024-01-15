@@ -6,24 +6,21 @@ namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
 use phpDocumentor\Guides\Nodes\Node;
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
 use phpDocumentor\Guides\RestructuredText\Parser\Productions\Rule;
 use phpDocumentor\Guides\RestructuredText\TextRoles\GenericLinkProvider;
-use Psr\Log\LoggerInterface;
 use T3Docs\GuidesPhpDomain\Nodes\MemberNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpCaseNode;
-use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
-use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 
 final class CaseDirective extends SubDirective
 {
     public function __construct(
-        Rule $startingRule,
-        GenericLinkProvider $genericLinkProvider,
-        private readonly AnchorReducer $anchorReducer,
+        Rule                              $startingRule,
+        GenericLinkProvider               $genericLinkProvider,
+        private readonly AnchorNormalizer $anchorNormalizer,
     ) {
         parent::__construct($startingRule);
         $genericLinkProvider->addGenericLink($this->getName(), $this->getName());
@@ -40,7 +37,7 @@ final class CaseDirective extends SubDirective
         Directive $directive,
     ): Node|null {
         $name = new MemberNameNode(trim($directive->getData()));
-        $id = $this->anchorReducer->reduceAnchor($name->toString());
+        $id = $this->anchorNormalizer->reduceAnchor($name->toString());
 
         $value = null;
         if ($directive->hasOption('value')) {

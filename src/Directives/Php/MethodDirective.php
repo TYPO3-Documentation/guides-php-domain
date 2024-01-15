@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
-use phpDocumentor\Guides\Nodes\CompoundNode;
 use phpDocumentor\Guides\Nodes\FieldListNode;
 use phpDocumentor\Guides\Nodes\FieldLists\FieldListItemNode;
 use phpDocumentor\Guides\Nodes\Node;
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
@@ -36,13 +35,13 @@ final class MethodDirective extends SubDirective
         ['final', 'abstract'],
     ];
     public function __construct(
-        Rule $startingRule,
-        GenericLinkProvider $genericLinkProvider,
+        Rule                               $startingRule,
+        GenericLinkProvider                $genericLinkProvider,
         private readonly MethodNameService $methodNameService,
-        private readonly AnchorReducer $anchorReducer,
-        private readonly LoggerInterface $logger,
-        private readonly ModifierService $modifierService,
-        private readonly InlineMarkupRule $inlineMarkupRule,
+        private readonly AnchorNormalizer  $anchorNormalizer,
+        private readonly LoggerInterface   $logger,
+        private readonly ModifierService   $modifierService,
+        private readonly InlineMarkupRule  $inlineMarkupRule,
     ) {
         parent::__construct($startingRule);
         $genericLinkProvider->addGenericLink($this->getName(), $this->getName());
@@ -66,7 +65,7 @@ final class MethodDirective extends SubDirective
                     if ($fieldListItem instanceof FieldListItemNode) {
                         if (trim(strtolower($fieldListItem->getTerm())) === 'returns') {
                             $returnInlineNode = $this->extractReturnDescriptionFromFieldListItem($returnInlineNode, $fieldListItem, $name->toString(), $blockContext);
-                        // the field list item does not get added to the new list, therefore removed
+                            // the field list item does not get added to the new list, therefore removed
                         } else {
                             $fieldListItems[] = $fieldListItem;
                         }
@@ -104,7 +103,7 @@ final class MethodDirective extends SubDirective
         Directive $directive,
     ): Node|null {
         $name = $this->methodNameService->getMethodName(trim($directive->getData()));
-        $id = $this->anchorReducer->reduceAnchor($name->toString());
+        $id = $this->anchorNormalizer->reduceAnchor($name->toString());
 
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
 

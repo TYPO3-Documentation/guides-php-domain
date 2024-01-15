@@ -6,7 +6,7 @@ namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
 use phpDocumentor\Guides\Nodes\Node;
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
@@ -31,11 +31,11 @@ final class ConstDirective extends SubDirective
         ['protected', 'public'],
     ];
     public function __construct(
-        Rule $startingRule,
-        GenericLinkProvider $genericLinkProvider,
-        private readonly AnchorReducer $anchorReducer,
-        private readonly LoggerInterface $logger,
-        private readonly ModifierService $modifierService,
+        Rule                              $startingRule,
+        GenericLinkProvider               $genericLinkProvider,
+        private readonly AnchorNormalizer $anchorNormalizer,
+        private readonly LoggerInterface  $logger,
+        private readonly ModifierService  $modifierService,
     ) {
         parent::__construct($startingRule);
         $genericLinkProvider->addGenericLink($this->getName(), $this->getName());
@@ -52,7 +52,7 @@ final class ConstDirective extends SubDirective
         Directive $directive,
     ): Node|null {
         $name = new MemberNameNode(trim($directive->getData()));
-        $id = $this->anchorReducer->reduceAnchor($name->toString());
+        $id = $this->anchorNormalizer->reduceAnchor($name->toString());
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
 
         foreach ($this->illegalCombinations as $combination) {

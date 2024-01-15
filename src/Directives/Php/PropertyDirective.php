@@ -6,7 +6,7 @@ namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
 use phpDocumentor\Guides\Nodes\Node;
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
@@ -14,7 +14,6 @@ use phpDocumentor\Guides\RestructuredText\Parser\Productions\Rule;
 use phpDocumentor\Guides\RestructuredText\TextRoles\GenericLinkProvider;
 use Psr\Log\LoggerInterface;
 use T3Docs\GuidesPhpDomain\Nodes\MemberNameNode;
-use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpPropertyNode;
 use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 
@@ -35,7 +34,7 @@ final class PropertyDirective extends SubDirective
     public function __construct(
         Rule $startingRule,
         GenericLinkProvider $genericLinkProvider,
-        private readonly AnchorReducer $anchorReducer,
+        private readonly AnchorNormalizer $anchorReducer,
         private readonly LoggerInterface $logger,
         private readonly ModifierService $modifierService,
     ) {

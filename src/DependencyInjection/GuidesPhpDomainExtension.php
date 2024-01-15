@@ -15,7 +15,6 @@ use T3Docs\GuidesPhpDomain\Nodes\MethodNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpCaseNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
-use T3Docs\GuidesPhpDomain\Nodes\PhpEnumNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpGlobalNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMethodNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpModifierNode;

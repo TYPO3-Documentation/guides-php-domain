@@ -6,16 +6,12 @@ namespace T3Docs\GuidesPhpDomain\Compiler\NodeTransformers;
 
 use phpDocumentor\Guides\Compiler\CompilerContext;
 use phpDocumentor\Guides\Compiler\NodeTransformer;
-use phpDocumentor\Guides\Nodes\ClassNode;
-use phpDocumentor\Guides\Nodes\DocumentNode;
 use phpDocumentor\Guides\Nodes\Node;
 
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use Psr\Log\LoggerInterface;
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMemberNode;
-
-use function array_merge;
 
 /**
  * @implements NodeTransformer<Node>
@@ -28,8 +24,8 @@ class MemberNodeTransformer implements NodeTransformer
     private ?PhpComponentNode $currentComponent = null;
 
     public function __construct(
-        private readonly LoggerInterface $logger,
-        private readonly AnchorReducer $anchorReducer,
+        private readonly LoggerInterface  $logger,
+        private readonly AnchorNormalizer $anchorNormalizer,
     ) {}
 
     public function enterNode(Node $node, CompilerContext $compilerContext): Node
@@ -47,7 +43,7 @@ class MemberNodeTransformer implements NodeTransformer
         }
 
         if ($node instanceof PhpMemberNode && $this->currentComponent instanceof PhpComponentNode) {
-            $newId = $this->anchorReducer->reduceAnchor($this->currentComponent->getId() . '::' . $node->getName());
+            $newId = $this->anchorNormalizer->reduceAnchor($this->currentComponent->getId() . '::' . $node->getName());
             return $node->withId($newId);
         }
 

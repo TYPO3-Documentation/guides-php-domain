@@ -6,7 +6,7 @@ namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
 use phpDocumentor\Guides\Nodes\Node;
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
@@ -19,11 +19,11 @@ use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 final class EnumDirective extends SubDirective
 {
     public function __construct(
-        Rule $startingRule,
-        GenericLinkProvider $genericLinkProvider,
+        Rule                                       $startingRule,
+        GenericLinkProvider                        $genericLinkProvider,
         private readonly FullyQualifiedNameService $fullyQualifiedNameService,
-        private readonly AnchorReducer $anchorReducer,
-        private readonly LoggerInterface $logger,
+        private readonly AnchorNormalizer          $anchorNormalizer,
+        private readonly LoggerInterface           $logger,
     ) {
         parent::__construct($startingRule);
         $genericLinkProvider->addGenericLink($this->getName(), $this->getName());
@@ -50,7 +50,7 @@ final class EnumDirective extends SubDirective
 
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName(trim($name), true);
 
-        $id = $this->anchorReducer->reduceAnchor($fqn->toString());
+        $id = $this->anchorNormalizer->reduceAnchor($fqn->toString());
 
         if ($directive->hasOption('type')) {
             if ($type != null) {
