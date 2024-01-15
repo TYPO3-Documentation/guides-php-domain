@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace T3Docs\GuidesPhpDomain\Nodes;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
-use phpDocumentor\Guides\Nodes\InlineCompoundNode;
 use phpDocumentor\Guides\Nodes\Node;
 
 final class PhpMethodNode extends PhpMemberNode

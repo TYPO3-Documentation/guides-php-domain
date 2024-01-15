@@ -6,7 +6,7 @@ namespace T3Docs\GuidesPhpDomain\Directives\Php;
 
 use phpDocumentor\Guides\Nodes\CollectionNode;
 use phpDocumentor\Guides\Nodes\Node;
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
+use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use phpDocumentor\Guides\RestructuredText\Directives\SubDirective;
 use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
@@ -19,7 +19,7 @@ final class GlobalDirective extends SubDirective
     public function __construct(
         Rule $startingRule,
         GenericLinkProvider $genericLinkProvider,
-        private readonly AnchorReducer $anchorReducer,
+        private readonly AnchorNormalizer $anchorReducer,
     ) {
         parent::__construct($startingRule);
         $genericLinkProvider->addGenericLink($this->getName(), $this->getName());

@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace T3Docs\GuidesPhpDomain\PhpDomain;
 
-use phpDocumentor\Guides\ReferenceResolvers\AnchorReducer;
-use phpDocumentor\Guides\RestructuredText\Parser\BlockContext;
 use phpDocumentor\Guides\RestructuredText\Parser\Directive;
-use phpDocumentor\Guides\RestructuredText\Parser\Productions\Rule;
-use phpDocumentor\Guides\RestructuredText\TextRoles\GenericLinkProvider;
-use Psr\Log\LoggerInterface;
 use T3Docs\GuidesPhpDomain\Nodes\PhpModifierNode;
 
 final class ModifierService
