@@ -102,7 +102,7 @@ final class MethodDirective extends SubDirective
         CollectionNode $collectionNode,
         Directive $directive,
     ): Node|null {
-        $name = $this->methodNameService->getMethodName(trim($directive->getData()));
+        $name = $this->methodNameService->getMethodName($blockContext, trim($directive->getData()));
         $id = $this->anchorNormalizer->reduceAnchor($name->toString());
 
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
