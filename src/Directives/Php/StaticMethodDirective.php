@@ -44,7 +44,7 @@ final class StaticMethodDirective extends SubDirective
             'Directive `.. php:staticmethod::` is deprecated use directive `.. php:method::` with option `:static:` instead. ',
             $blockContext->getLoggerInformation()
         );
-        $name = $this->methodNameService->getMethodName(trim($directive->getData()));
+        $name = $this->methodNameService->getMethodName($blockContext, trim($directive->getData()));
         $id = $this->anchorNormalizer->reduceAnchor($name->toString());
 
         return new PhpMethodNode(
