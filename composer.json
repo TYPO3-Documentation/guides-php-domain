@@ -5,8 +5,8 @@
     "type": "library",
     "homepage": "https://docs.typo3.org",
     "require": {
-        "phpdocumentor/guides": "^0.3",
-        "phpdocumentor/guides-restructured-text": "^0.3"
+        "phpdocumentor/guides": "^1.0",
+        "phpdocumentor/guides-restructured-text": "^1.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.39",
