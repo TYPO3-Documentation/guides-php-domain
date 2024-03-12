@@ -15,3 +15,7 @@ charset = utf-8
 # YAML-Files
 [*.{yaml,yml}]
 indent_size = 2
+
+[Makefile]
+# Use tabs for indentation (Makefiles require tabs)
+indent_style = tab
