@@ -5,6 +5,7 @@
         {%- endfor -%}
         {% if node.phpType -%}<span class="pre">{{ node.phpType }}</span> {% endif -%}
         {{ renderNode(node.memberName) }}
+        {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>{{ renderNode(node.value) }}</dd>
 </dl>

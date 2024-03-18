@@ -3,6 +3,7 @@
         id="{{ node.id }}">
         <em class="property"><span class="pre">global</span> </em>
         <span class="pre">{{ node.name }}</span>
+        {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>
         {{ renderNode(node.value) }}

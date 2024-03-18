@@ -6,6 +6,7 @@
         {% if node.phpType -%}<span class="pre">{{ node.phpType }}</span> {% endif -%}
         <em class="property"><span class="pre">const</span></em>
         {{ renderNode(node.memberName) }}
+        {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>{{ renderNode(node.value) }}</dd>
 </dl>
