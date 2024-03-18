@@ -6,6 +6,7 @@
         {%- endfor -%}
         <em class="property"><span class="pre">{{ node.type }}</span> </em>
         {{ renderNode(node.name) }} {%- if node.type == 'enum' and node.phpType -%}<span class="pre"> : {{ node.phpType }}</span> {% endif -%}
+        {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>
         {{ renderNode(node.value) }}

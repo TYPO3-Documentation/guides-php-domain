@@ -2,6 +2,7 @@
     <dt class="sig sig-object php" id="{{ node.id }}">
         <em class="property"><span class="pre">case</span></em>
         {{ renderNode(node.memberName) }} : {% if node.backedValue -%}<span class="pre">{{ node.backedValue }}</span> {% endif -%}
+        {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>{{ renderNode(node.value) }}</dd>
 </dl>

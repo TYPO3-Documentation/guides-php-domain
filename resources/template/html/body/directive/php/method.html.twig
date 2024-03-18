@@ -4,6 +4,7 @@
             {{- renderNode(modifier) }}{{ ' ' -}}
         {%- endfor -%}
         {{- renderNode(node.methodName) -}}
+        {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>
         {{ renderNode(node.value) }}
