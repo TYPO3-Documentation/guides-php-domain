@@ -17,6 +17,7 @@ use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 
 final class InterfaceDirective extends SubDirective
 {
+    use ComponentTrait;
     public function __construct(
         Rule                                       $startingRule,
         GenericLinkProvider                        $genericLinkProvider,
@@ -41,13 +42,15 @@ final class InterfaceDirective extends SubDirective
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName($name, true);
 
         $id = $this->anchorNormalizer->reduceAnchor($fqn->toString());
-
-        return new PhpInterfaceNode(
+        $node = new PhpInterfaceNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
             null,
             [],
         );
+
+        $this->setParentsForMembers($collectionNode, $node);
+        return $node;
     }
 }

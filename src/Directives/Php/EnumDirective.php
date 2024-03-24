@@ -18,6 +18,7 @@ use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 
 final class EnumDirective extends SubDirective
 {
+    use ComponentTrait;
     public function __construct(
         Rule                                       $startingRule,
         GenericLinkProvider                        $genericLinkProvider,
@@ -59,7 +60,7 @@ final class EnumDirective extends SubDirective
             $type = $directive->getOption('type')->toString();
         }
 
-        return new PhpEnumNode(
+        $node = new PhpEnumNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
@@ -68,5 +69,8 @@ final class EnumDirective extends SubDirective
             [],
             $type,
         );
+
+        $this->setParentsForMembers($collectionNode, $node);
+        return $node;
     }
 }
