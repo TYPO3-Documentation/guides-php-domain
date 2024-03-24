@@ -22,6 +22,7 @@ use T3Docs\GuidesPhpDomain\TextRoles\ClassTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ConstTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\EnumTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\ExceptionTextRole;
+use T3Docs\GuidesPhpDomain\TextRoles\GlobalTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\MethodTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\PropertyTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\TraitTextRole;
@@ -74,6 +75,8 @@ return static function (ContainerConfigurator $container): void {
         ->set(EnumTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(ExceptionTextRole::class)
+        ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
+        ->set(GlobalTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
         ->set(InterfaceTextRole::class)
         ->tag('phpdoc.guides.parser.rst.text_role', ['domain' => 'php'])
