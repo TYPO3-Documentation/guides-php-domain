@@ -19,6 +19,7 @@ use T3Docs\GuidesPhpDomain\PhpDomain\ModifierService;
 
 final class ClassDirective extends SubDirective
 {
+    use ComponentTrait;
     /**
      * @var string[]
      */
@@ -54,7 +55,7 @@ final class ClassDirective extends SubDirective
             $this->logger->warning('A PHP class cannot be abstract and final at the same time.', $blockContext->getLoggerInformation());
         }
 
-        return new PhpClassNode(
+        $node = new PhpClassNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
@@ -62,5 +63,9 @@ final class ClassDirective extends SubDirective
             [],
             $modifiers,
         );
+
+        $this->setParentsForMembers($collectionNode, $node);
+
+        return $node;
     }
 }

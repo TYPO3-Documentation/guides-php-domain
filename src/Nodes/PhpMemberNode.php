@@ -20,6 +20,7 @@ abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode
         private readonly string $type,
         private readonly string $name,
         array $value = [],
+        private ?PhpComponentNode $parentComponent = null,
     ) {
         parent::__construct($value);
     }
@@ -42,7 +43,7 @@ abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode
     }
     public function getLinkText(): string
     {
-        return $this->name;
+        return $this->getFullyQualifiedName();
     }
 
     public function getType(): string
@@ -53,5 +54,23 @@ abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function getParentComponent(): ?PhpComponentNode
+    {
+        return $this->parentComponent;
+    }
+
+    public function setParentComponent(?PhpComponentNode $parentComponent): void
+    {
+        $this->parentComponent = $parentComponent;
+    }
+
+    public function getFullyQualifiedName(): string
+    {
+        if ($this->parentComponent == null) {
+            return $this->getName();
+        }
+        return $this->parentComponent->getName()->toString() . '::' . $this->getName();
     }
 }

@@ -17,6 +17,7 @@ use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 
 final class TraitDirective extends SubDirective
 {
+    use ComponentTrait;
     public function __construct(
         Rule                                       $startingRule,
         GenericLinkProvider                        $genericLinkProvider,
@@ -40,13 +41,15 @@ final class TraitDirective extends SubDirective
         $name = trim($directive->getData());
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName($name, true);
         $id = $this->anchorNormalizer->reduceAnchor($fqn->toString());
-
-        return new PhpTraitNode(
+        $node = new PhpTraitNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
             null,
             [],
         );
+
+        $this->setParentsForMembers($collectionNode, $node);
+        return $node;
     }
 }
