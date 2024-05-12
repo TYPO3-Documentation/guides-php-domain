@@ -20,8 +20,9 @@ final class PhpConstNode extends PhpMemberNode
         array                           $value = [],
         private readonly array $modifiers = [],
         private readonly string|null    $phpType = null,
+        readonly bool $noindex = false,
     ) {
-        parent::__construct($id, self::TYPE, $memberName->toString(), $value);
+        parent::__construct($id, self::TYPE, $memberName->toString(), $value, null, $noindex);
     }
 
     public function getMemberName(): MemberNameNode

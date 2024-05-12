@@ -41,12 +41,15 @@ final class TraitDirective extends SubDirective
         $name = trim($directive->getData());
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName($name, true);
         $id = $this->anchorNormalizer->reduceAnchor($fqn->toString());
+
+        $isnoindex = $directive->hasOption('noindex');
         $node = new PhpTraitNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
             null,
             [],
+            $isnoindex,
         );
 
         $this->setParentsForMembers($collectionNode, $node);

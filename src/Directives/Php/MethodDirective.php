@@ -124,12 +124,14 @@ final class MethodDirective extends SubDirective
 
         $childrenNodes = $this->extractFieldsFromList($collectionNode, $returnInlineNode, $name, $blockContext);
 
+        $isnoindex = $directive->hasOption('noindex');
         return new PhpMethodNode(
             $id,
             $name,
             $childrenNodes,
             $modifiers,
-            $returnInlineNode
+            $returnInlineNode,
+            $isnoindex,
         );
     }
 }

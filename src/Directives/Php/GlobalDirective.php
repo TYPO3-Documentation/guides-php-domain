@@ -38,10 +38,12 @@ final class GlobalDirective extends SubDirective
         $name = trim($directive->getData());
         $id = $this->anchorReducer->reduceAnchor($name);
 
+        $isnoindex = $directive->hasOption('noindex');
         return new PhpGlobalNode(
             $id,
             $name,
             $collectionNode->getChildren(),
+            $isnoindex,
         );
     }
 }

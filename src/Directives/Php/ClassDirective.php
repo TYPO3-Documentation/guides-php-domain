@@ -50,6 +50,7 @@ final class ClassDirective extends SubDirective
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName($name, true);
         $id = $this->anchorNormalizer->reduceAnchor($fqn->toString());
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
+        $isnoindex = $directive->hasOption('noindex');
 
         if ($directive->hasOption('abstract') && $directive->hasOption('final')) {
             $this->logger->warning('A PHP class cannot be abstract and final at the same time.', $blockContext->getLoggerInformation());
@@ -62,6 +63,7 @@ final class ClassDirective extends SubDirective
             null,
             [],
             $modifiers,
+            $isnoindex,
         );
 
         $this->setParentsForMembers($collectionNode, $node);

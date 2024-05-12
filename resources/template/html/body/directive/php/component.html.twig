@@ -1,6 +1,6 @@
 <dl class="php {{ node.type }}">
     <dt class="sig sig-object php"
-        id="{{ node.id }}">
+        {%- if not node.noindex %} id="{{ node.id }}"{% endif -%}>
         {% for modifier in node.modifiers -%}
             {{- renderNode(modifier) }}{{ ' ' -}}
         {%- endfor -%}

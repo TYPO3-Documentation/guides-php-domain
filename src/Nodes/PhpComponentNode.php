@@ -7,13 +7,14 @@ namespace T3Docs\GuidesPhpDomain\Nodes;
 use phpDocumentor\Guides\Nodes\CompoundNode;
 use phpDocumentor\Guides\Nodes\LinkTargetNode;
 use phpDocumentor\Guides\Nodes\Node;
+use phpDocumentor\Guides\Nodes\OptionalLinkTargetsNode;
 
 /**
  * Stores data on PHP classes, interfaces, traits and enums
  *
  * @extends CompoundNode<Node>
  */
-abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode
+abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode, OptionalLinkTargetsNode
 {
     /**
      * @param list<PhpMemberNode> $members
@@ -28,6 +29,7 @@ abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode
         private PhpNamespaceNode|null $namespace = null,
         private array $members = [],
         private readonly array $modifiers = [],
+        private readonly bool $noindex = false,
     ) {
         parent::__construct($value);
     }
@@ -93,5 +95,10 @@ abstract class PhpComponentNode extends CompoundNode implements LinkTargetNode
     public function getModifiers(): array
     {
         return $this->modifiers;
+    }
+
+    public function isNoindex(): bool
+    {
+        return $this->noindex;
     }
 }

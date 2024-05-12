@@ -7,13 +7,14 @@ namespace T3Docs\GuidesPhpDomain\Nodes;
 use phpDocumentor\Guides\Nodes\CompoundNode;
 use phpDocumentor\Guides\Nodes\LinkTargetNode;
 use phpDocumentor\Guides\Nodes\Node;
+use phpDocumentor\Guides\Nodes\OptionalLinkTargetsNode;
 
 /**
  * Stores data on global PHP variables
  *
  * @extends CompoundNode<Node>
  */
-final class PhpGlobalNode extends CompoundNode implements LinkTargetNode
+final class PhpGlobalNode extends CompoundNode implements LinkTargetNode, OptionalLinkTargetsNode
 {
     private const TYPE = 'global';
     /**
@@ -23,6 +24,7 @@ final class PhpGlobalNode extends CompoundNode implements LinkTargetNode
         private readonly string $id,
         private readonly string $name,
         array $value = [],
+        readonly bool $noindex = false,
     ) {
         parent::__construct($value);
     }
@@ -45,5 +47,10 @@ final class PhpGlobalNode extends CompoundNode implements LinkTargetNode
     public function getLinkText(): string
     {
         return $this->getName();
+    }
+
+    public function isNoindex(): bool
+    {
+        return $this->noindex;
     }
 }

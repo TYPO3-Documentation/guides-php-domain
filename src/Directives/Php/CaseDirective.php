@@ -38,6 +38,7 @@ final class CaseDirective extends SubDirective
     ): Node|null {
         $name = new MemberNameNode(trim($directive->getData()));
         $id = $this->anchorNormalizer->reduceAnchor($name->toString());
+        $isnoindex = $directive->hasOption('noindex');
 
         $value = null;
         if ($directive->hasOption('value')) {
@@ -49,6 +50,7 @@ final class CaseDirective extends SubDirective
             $name,
             $collectionNode->getChildren(),
             $value,
+            $isnoindex,
         );
     }
 }
