@@ -20,8 +20,9 @@ final class PhpMethodNode extends PhpMemberNode
         array $value = [],
         private readonly array $modifiers = [],
         private readonly CollectionNode|null $returnsDescription = null,
+        readonly bool $noindex = false,
     ) {
-        parent::__construct($id, self::TYPE, $methodName->toString(), $value);
+        parent::__construct($id, self::TYPE, $methodName->toString(), $value, null, $noindex);
     }
 
     public function getMethodName(): MethodNameNode

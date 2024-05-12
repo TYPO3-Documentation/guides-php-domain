@@ -79,12 +79,14 @@ final class PropertyDirective extends SubDirective
             $type = $directive->getOption('type')->toString();
         }
 
+        $isnoindex = $directive->hasOption('noindex');
         return new PhpPropertyNode(
             $id,
             $name,
             $collectionNode->getChildren(),
             $type,
             $modifiers,
+            $isnoindex,
         );
     }
 }

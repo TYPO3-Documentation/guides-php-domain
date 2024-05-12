@@ -47,11 +47,14 @@ final class StaticMethodDirective extends SubDirective
         $name = $this->methodNameService->getMethodName($blockContext, trim($directive->getData()));
         $id = $this->anchorNormalizer->reduceAnchor($name->toString());
 
+        $isnoindex = $directive->hasOption('noindex');
         return new PhpMethodNode(
             $id,
             $name,
             $collectionNode->getChildren(),
-            [new PhpModifierNode(PhpModifierNode::STATIC)]
+            [new PhpModifierNode(PhpModifierNode::STATIC)],
+            null,
+            $isnoindex,
         );
     }
 }

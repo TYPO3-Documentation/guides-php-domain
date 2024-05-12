@@ -59,6 +59,7 @@ final class EnumDirective extends SubDirective
             }
             $type = $directive->getOption('type')->toString();
         }
+        $isnoindex = $directive->hasOption('noindex');
 
         $node = new PhpEnumNode(
             $id,
@@ -68,6 +69,7 @@ final class EnumDirective extends SubDirective
             [],
             [],
             $type,
+            $isnoindex,
         );
 
         $this->setParentsForMembers($collectionNode, $node);

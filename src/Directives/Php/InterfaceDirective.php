@@ -42,12 +42,15 @@ final class InterfaceDirective extends SubDirective
         $fqn = $this->fullyQualifiedNameService->getFullyQualifiedName($name, true);
 
         $id = $this->anchorNormalizer->reduceAnchor($fqn->toString());
+
+        $isnoindex = $directive->hasOption('noindex');
         $node = new PhpInterfaceNode(
             $id,
             $fqn,
             $collectionNode->getChildren(),
             null,
             [],
+            $isnoindex,
         );
 
         $this->setParentsForMembers($collectionNode, $node);

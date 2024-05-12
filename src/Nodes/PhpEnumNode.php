@@ -23,8 +23,9 @@ final class PhpEnumNode extends PhpComponentNode
         array $members = [],
         array $modifiers = [],
         private readonly ?string $phpType = null,
+        readonly bool $noindex = false,
     ) {
-        parent::__construct($id, self::TYPE, $name, $value, $namespace, $members, $modifiers);
+        parent::__construct($id, self::TYPE, $name, $value, $namespace, $members, $modifiers, $noindex);
     }
 
     public function getPhpType(): ?string

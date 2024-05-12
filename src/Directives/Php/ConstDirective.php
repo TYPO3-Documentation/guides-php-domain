@@ -54,6 +54,7 @@ final class ConstDirective extends SubDirective
         $name = new MemberNameNode(trim($directive->getData()));
         $id = $this->anchorNormalizer->reduceAnchor($name->toString());
         $modifiers = $this->modifierService->getModifiersFromDirectiveOptions($directive, $this->allowedModifiers);
+        $isnoindex = $directive->hasOption('noindex');
 
         foreach ($this->illegalCombinations as $combination) {
             if ($directive->hasOption($combination[0]) && $directive->hasOption($combination[1])) {
@@ -72,6 +73,7 @@ final class ConstDirective extends SubDirective
             $collectionNode->getChildren(),
             $modifiers,
             $type,
+            $isnoindex,
         );
     }
 }

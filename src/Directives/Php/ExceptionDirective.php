@@ -54,6 +54,7 @@ final class ExceptionDirective extends SubDirective
         if ($directive->hasOption('abstract') && $directive->hasOption('final')) {
             $this->logger->warning('A PHP class cannot be abstract and final at the same time.', $blockContext->getLoggerInformation());
         }
+        $isnoindex = $directive->hasOption('noindex');
 
         $node = new PhpExceptionNode(
             $id,
@@ -62,6 +63,7 @@ final class ExceptionDirective extends SubDirective
             null,
             [],
             $modifiers,
+            $isnoindex,
         );
 
         $this->setParentsForMembers($collectionNode, $node);

@@ -7,13 +7,14 @@ namespace T3Docs\GuidesPhpDomain\Nodes;
 use phpDocumentor\Guides\Nodes\CompoundNode;
 use phpDocumentor\Guides\Nodes\LinkTargetNode;
 use phpDocumentor\Guides\Nodes\Node;
+use phpDocumentor\Guides\Nodes\OptionalLinkTargetsNode;
 
 /**
  * Stores data on constants, methods and properties
  *
  * @extends CompoundNode<Node>
  */
-abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode
+abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode, OptionalLinkTargetsNode
 {
     public function __construct(
         private string $id,
@@ -21,6 +22,7 @@ abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode
         private readonly string $name,
         array $value = [],
         private ?PhpComponentNode $parentComponent = null,
+        private readonly bool $noindex = false,
     ) {
         parent::__construct($value);
     }
@@ -54,6 +56,10 @@ abstract class PhpMemberNode extends CompoundNode implements LinkTargetNode
     public function getId(): string
     {
         return $this->id;
+    }
+    public function isNoindex(): bool
+    {
+        return $this->noindex;
     }
 
     public function getParentComponent(): ?PhpComponentNode
