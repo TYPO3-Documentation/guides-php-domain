@@ -33,6 +33,6 @@ return static function (RectorConfig $config): void {
     $config->skip([
         PreferPHPUnitThisCallRector::class,
         ChangeAndIfToEarlyReturnRector::class,
-        SimplifyRegexPatternRector::class
+        SimplifyRegexPatternRector::class,
     ]);
 };
