@@ -26,9 +26,8 @@ use T3Docs\GuidesPhpDomain\TextRoles\GlobalTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\MethodTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\PropertyTextRole;
 use T3Docs\GuidesPhpDomain\TextRoles\TraitTextRole;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
-
 use T3Docs\GuidesPhpDomain\Directives\Php\EnumDirective;
+
 use T3Docs\GuidesPhpDomain\Directives\Php\InterfaceDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\MethodDirective;
 use T3Docs\GuidesPhpDomain\Directives\Php\NamespaceDirective;
@@ -36,6 +35,8 @@ use T3Docs\GuidesPhpDomain\PhpDomain\FullyQualifiedNameService;
 use T3Docs\GuidesPhpDomain\PhpDomain\MethodNameService;
 use T3Docs\GuidesPhpDomain\PhpDomain\NamespaceRepository;
 use T3Docs\GuidesPhpDomain\TextRoles\InterfaceTextRole;
+
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
