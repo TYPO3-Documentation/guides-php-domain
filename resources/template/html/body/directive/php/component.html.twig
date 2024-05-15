@@ -1,3 +1,4 @@
+{%- if node.name.namespaceNode %}{%- set fqn = '\\' ~ node.name.namespaceNode.name ~ '\\' ~ node.name.namespaceNode.name -%}{% endif -%}
 <dl class="php {{ node.type }}">
     <dt class="sig sig-object php"
         {%- if not node.noindex %} id="{{ node.id }}"{% endif -%}>
@@ -5,10 +6,21 @@
             {{- renderNode(modifier) }}{{ ' ' -}}
         {%- endfor -%}
         <em class="property"><span class="pre">{{ node.type }}</span> </em>
-        {{ renderNode(node.name) }} {%- if node.type == 'enum' and node.phpType -%}<span class="pre"> : {{ node.phpType }}</span> {% endif -%}
+        {% include "body/directive/php/partials/fullyQualifiedName.html.twig" with {'className': node.name, 'fqn': fqn} %}
+        {%- if node.type == 'enum' and node.phpType -%}<span class="pre"> : {{ node.phpType }}</span> {% endif -%}
         {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>
+        {% if node.name.namespaceNode %}
+            <dl class="field-list simple">
+                {% if node.name.namespaceNode %}
+                    <dt class="field-even">Fully qualified name</dt>
+                    <dd class="field-even">
+                        {% include "body/directive/php/partials/codeStyle.html.twig" with {'code': fqn} %}
+                    </dd>
+                {% endif -%}
+            </dl>
+        {% endif -%}
         {{ renderNode(node.value) }}
     </dd>
 </dl>
