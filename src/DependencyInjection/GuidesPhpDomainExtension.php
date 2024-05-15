@@ -9,9 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use T3Docs\GuidesPhpDomain\Nodes\FullyQualifiedNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\MemberNameNode;
-use T3Docs\GuidesPhpDomain\Nodes\MethodNameNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpCaseNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpConstNode;
@@ -44,7 +42,6 @@ final class GuidesPhpDomainExtension extends Extension implements PrependExtensi
             [
                 'base_template_paths' => [dirname(__DIR__, 2) . '/resources/template/html'],
                 'templates' => [
-                    template(FullyQualifiedNameNode::class, 'body/directive/php/fullyQualifiedName.html.twig'),
                     template(PhpCaseNode::class, 'body/directive/php/case.html.twig'),
                     template(PhpComponentNode::class, 'body/directive/php/component.html.twig'),
                     template(PhpConstNode::class, 'body/directive/php/const.html.twig'),
@@ -54,7 +51,6 @@ final class GuidesPhpDomainExtension extends Extension implements PrependExtensi
                     template(PhpPropertyNode::class, 'body/directive/php/property.html.twig'),
                     template(PhpModifierNode::class, 'body/directive/php/modifier.html.twig'),
                     template(MemberNameNode::class, 'body/directive/php/memberName.html.twig'),
-                    template(MethodNameNode::class, 'body/directive/php/methodName.html.twig'),
                 ],
             ],
         );

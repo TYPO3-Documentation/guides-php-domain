@@ -3,7 +3,7 @@
         {%- for modifier in node.modifiers -%}
             {{- renderNode(modifier) }}{{ ' ' -}}
         {%- endfor -%}
-        {{- renderNode(node.methodName) -}}
+        {% include "body/directive/php/partials/method/methodName.html.twig" with {'methodName': node.methodName} %}
         {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>

@@ -34,4 +34,4 @@ test-unit: ## Runs unit tests with phpunit
 	vendor/bin/phpunit --testsuite=unit
 
 .PHONY: test
-test: test-integration test-unit ## Runs all test suites with phpunit
+test: fix-code-style phpstan test-integration test-unit ## Runs all test suites with phpunit
