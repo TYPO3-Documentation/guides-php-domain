@@ -9,6 +9,17 @@
         {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>
+        {% if node.name.namespaceNode %}
+            <dl class="field-list simple">
+                {% if node.name.namespaceNode %}
+                    <dt class="field-even">Fully qualified name</dt>
+                    <dd class="field-even">
+                        {% set fqn = '\\' ~ node.name.namespaceNode.name ~ '\\' ~ node.name.namespaceNode.name %}
+                        {% include "body/directive/php/partials/codeStyle.html.twig" with {'code': fqn} %}
+                    </dd>
+                {% endif -%}
+            </dl>
+        {% endif -%}
         {{ renderNode(node.value) }}
     </dd>
 </dl>

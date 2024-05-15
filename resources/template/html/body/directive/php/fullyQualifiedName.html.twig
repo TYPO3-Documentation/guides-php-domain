@@ -1,4 +1,7 @@
-{% if  node.namespaceNode != null %}
-    <span class="sig-prename descclassname"><span class="pre">\{{ node.namespaceNode.name }}\</span></span>
-{% endif %}
-<span class="sig-name descname"><span class="pre">{{ node.name }}</span></span>
+<span class="sig-name descname">
+    <span class="pre fqn"
+        {%- if node.namespaceNode != null %} data-namespace="\{{ node.namespaceNode.name }}" {% endif -%}
+          title="{% if  node.namespaceNode != null %}\{{ node.namespaceNode.name }}\{% endif %}{{ node.name }}">
+        {{ node.name }}
+    </span>
+</span>
