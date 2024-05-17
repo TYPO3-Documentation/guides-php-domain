@@ -1,4 +1,4 @@
-{%- if node.name.namespaceNode %}{%- set fqn = '\\' ~ node.name.namespaceNode.name ~ '\\' ~ node.name.namespaceNode.name -%}{% endif -%}
+{%- if node.name.namespaceNode %}{%- set fqn = '\\' ~ node.name.namespaceNode.name ~ '\\' ~ node.name.name -%}{% endif -%}
 <dl class="php {{ node.type }}">
     <dt class="sig sig-object php"
         {%- if not node.noindex %} id="{{ node.id }}"{% endif -%}>
