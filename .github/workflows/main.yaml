@@ -21,12 +21,13 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 1
-      - name: Setup PHP version
-        uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1
+      - name: Install PHP
+        uses: TYPO3-Documentation/.github/actions/setup-php@main
         with:
           php-version: ${{ matrix.php }}
+          php-extensions: ''
       - name: "Install dependencies with Composer"
-        uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
         with:
           dependency-versions: "locked"
       - name: "Lint PHP"
@@ -42,12 +43,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-      - name: Setup PHP version
-        uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1
+      - name: Install PHP
+        uses: TYPO3-Documentation/.github/actions/setup-php@main
         with:
-          php-version: "8.1"
+          php-version: '8.1'
+          php-extensions: ''
       - name: "Install dependencies with Composer"
-        uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
         with:
           dependency-versions: "locked"
       - name: "Check composer.json"
