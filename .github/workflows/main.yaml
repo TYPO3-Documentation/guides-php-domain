@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 1
       - name: Install PHP
-        uses: TYPO3-Documentation/.github/actions/setup-php@main
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: ${{ matrix.php }}
           php-extensions: ''
