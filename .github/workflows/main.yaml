@@ -44,7 +44,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - name: Install PHP
-        uses: TYPO3-Documentation/.github/actions/setup-php@main
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: '8.1'
           php-extensions: ''
