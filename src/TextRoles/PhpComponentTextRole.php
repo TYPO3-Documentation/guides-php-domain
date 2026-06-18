@@ -63,7 +63,9 @@ abstract class PhpComponentTextRole implements TextRole
     /** @return array{text:?string,uri:string} */
     private function extractEmbeddedUri(string $text): array
     {
-        preg_match(self::TEXTROLE_LINK_REGEX, $text, $matches);
+        if (preg_match(self::TEXTROLE_LINK_REGEX, $text, $matches) !== 1) {
+            return ['text' => null, 'uri' => $text];
+        }
 
         $text = $matches[1] === '' ? null : $matches[1];
         $uri = $matches[1];

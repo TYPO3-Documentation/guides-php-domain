@@ -7,7 +7,6 @@ namespace T3Docs\GuidesPhpDomain\Compiler\NodeTransformers;
 use phpDocumentor\Guides\Compiler\CompilerContext;
 use phpDocumentor\Guides\Compiler\NodeTransformer;
 use phpDocumentor\Guides\Nodes\Node;
-
 use phpDocumentor\Guides\ReferenceResolvers\AnchorNormalizer;
 use Psr\Log\LoggerInterface;
 use T3Docs\GuidesPhpDomain\Nodes\PhpComponentNode;

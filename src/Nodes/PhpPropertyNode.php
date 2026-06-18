@@ -20,7 +20,7 @@ final class PhpPropertyNode extends PhpMemberNode
         array                           $value = [],
         private readonly string|null    $phpType = null,
         private readonly array          $modifiers = [],
-        readonly bool $noindex = false,
+        public readonly bool $noindex = false,
     ) {
         parent::__construct($id, self::TYPE, $memberName->toString(), $value, null, $noindex);
     }

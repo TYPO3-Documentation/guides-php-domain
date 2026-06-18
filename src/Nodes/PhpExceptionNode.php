@@ -21,7 +21,7 @@ final class PhpExceptionNode extends PhpComponentNode
         PhpNamespaceNode|null $namespace = null,
         array $members = [],
         array $modifiers = [],
-        readonly bool $noindex = false,
+        public readonly bool $noindex = false,
     ) {
         parent::__construct($id, self::TYPE, $name, $value, $namespace, $members, $modifiers, $noindex);
     }

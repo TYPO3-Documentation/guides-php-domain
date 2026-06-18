@@ -19,7 +19,7 @@ final class PhpInterfaceNode extends PhpComponentNode
         array $value = [],
         PhpNamespaceNode|null $namespace = null,
         array $members = [],
-        readonly bool $noindex = false,
+        public readonly bool $noindex = false,
     ) {
         parent::__construct($id, self::TYPE, $name, $value, $namespace, $members, [], $noindex);
     }
