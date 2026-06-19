@@ -7,8 +7,8 @@
         {% include "body/directive/php/partials/linkToSnippet.html.twig" %}
     </dt>
     <dd>
-        {{ renderNode(node.value) }}
-        {% if node.returnsDescription %}
+        {{- renderNode(node.value) -}}
+        {%- if node.returnsDescription %}
             <dl class="field-list simple">
                 <dt class="field-even">Returns</dt>
                 <dd class="field-even">
