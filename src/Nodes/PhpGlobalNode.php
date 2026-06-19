@@ -24,7 +24,7 @@ final class PhpGlobalNode extends CompoundNode implements LinkTargetNode, Option
         private readonly string $id,
         private readonly string $name,
         array $value = [],
-        readonly bool $noindex = false,
+        public readonly bool $noindex = false,
     ) {
         parent::__construct($value);
     }

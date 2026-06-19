@@ -17,7 +17,6 @@ use T3Docs\GuidesPhpDomain\Nodes\PhpGlobalNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpMethodNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpModifierNode;
 use T3Docs\GuidesPhpDomain\Nodes\PhpNamespaceNode;
-
 use T3Docs\GuidesPhpDomain\Nodes\PhpPropertyNode;
 
 use function dirname;
